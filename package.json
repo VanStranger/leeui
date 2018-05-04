@@ -1,0 +1,22 @@
+{
+  "name": "leeui",
+  "version": "1.0.0",
+  "description": "融百家之长，成一家之库。",
+  "main": "leeui.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VanStranger/leeui.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VanStranger/leeui/issues"
+  },
+  "homepage": "https://github.com/VanStranger/leeui#readme",
+  "dependencies": {
+    "graphicsmagick": "0.0.1"
+  }
+}

@@ -1,3 +1,10 @@
+/**
+ 
+ @Name: leeui
+ @Author: van
+ @Site: 暂无
+ 
+ */
 var l = (function() {
     var lee =function(){
     	this.silent=0;
@@ -17,6 +24,8 @@ var l = (function() {
                 var l_selects = this.l_forms[i][0].getElementsByTagName("select");
                 for (var j = 0, select_len = l_selects.length; j < select_len; j++) {
                 	var l_options=l_selects[j].getElementsByTagName("option");
+                	var l_select_name=l_selects[j].getAttribute("name");
+                	var l_select_title=l_selects[j].options.length?l_selects[j].options[0].innerText:"";
                     var selectdiv = document.createElement("div");
                     selectdiv.className='l-unselect l-form-select';
                     selectdivhtml ="";
@@ -27,13 +36,14 @@ var l = (function() {
 						if(!l_op_value && !l_op_title){
 							selectdivhtml +='<dd l-value="" class="l-select-tips">请选择</dd>';
 						}else{
+							sed && (l_select_title=l_op_title);
 							selectdivhtml +='<dd l-value="'+l_op_value+'" class="'+ (sed?"l-this":"") +'">'+l_op_title+'</dd>';
 
 						}
 
 					}
                     selectdivhtml =         '<div class="l-select-title">'+
-												'<input type="text" placeholder="请选择" value="'+l_op_title+'" readonly="" class="l-input l-unselect">'+
+												'<input type="text" placeholder="请选择" value="'+l_select_title+'" readonly="" class="l-input l-unselect">'+
 												'<i class="l-edge"></i>'+
 											'</div>'+
 											'<dl class="l-anim l-anim-upbit" style="">'+selectdivhtml;
@@ -193,6 +203,43 @@ var l = (function() {
                 }
             
             }
+        },
+        getFormJson(){
+        	var arr=[];
+        	var args = Array.prototype.slice.call(arguments);
+        	if(args.length){
+        		if(!isNaN(args[0])){
+        			if(this.l_forms.length>parseInt(args[0])){
+        				var l_form=this.l_forms[parseInt(args[0])];
+        				for(var i=0,len=l_form[0].length;i<len;i++){
+        					var obj=l_form[0][i];
+        					switch(obj.tagName){
+        						case "INPUT":
+        							if(["text","password"].indexOf(obj.getAttribute("type").toLocaleLowerCase())>-1){
+        								var item={},key=obj.getAttribute("name");
+        								if(key){       									
+	        								item[key]=obj.value;
+	        								arr.push(item);
+        								}
+        							}
+        							if(["checkbox","radio"].indexOf(obj.getAttribute("type").toLocaleLowerCase())>-1 && obj.checked){
+        								console.log(obj);
+        								var item={},key=obj.getAttribute("name");
+        								item[key]=obj.getAttribute("value") || "on";
+        								arr.push(item);
+        							}
+        							break;
+
+        					}
+        				}
+        				return arr;
+        			}else{
+        				return null;
+        			}
+        		}
+        	}else{
+        		console.log("noarguments");
+        	}
         },
         say:function(){
         	if(!this.silent){

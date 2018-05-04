@@ -1,9 +1,9 @@
 /**
  
  @Name: leeui
- @Author: van
+ @Author: 贤心
  @Site: 暂无
- 
+ @Editor: van;
  */
 
 
@@ -350,7 +350,7 @@ hr, .l-timeline-item:before{background-color: #e6e6e6;}
 .l-btn .l-icon{margin-right: 3px; font-size: 18px; vertical-align: bottom; vertical-align: middle\0;}
 
 /* 原始 */.l-btn-primary{border: 1px solid #C9C9C9; background-color: #fff; color: #555;}
-.l-btn-primary:hover{border-color: #009688; color: #333}
+          .l-btn-primary:hover{border-color: #009688; color: #333}
 /* 百搭 */.l-btn-normal{background-color: #1E9FFF;}
 /* 暖色 */.l-btn-warm{background-color: #FFB800;}
 /* 警告 */.l-btn-danger{background-color: #FF5722;}
