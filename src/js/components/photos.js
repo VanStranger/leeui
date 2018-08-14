@@ -30,8 +30,8 @@ l.photos={
             var imgbox=document.getElementsByClassName("l_imgbox")[0];
             this.imgboxwidth=imgbox.clientWidth;
             this.imgboxheight=imgbox.clientHeight;
-            document.getElementsByClassName("l_img active")[0].style.marginLeft = "-" + (this.imgboxwidth - document.getElementsByClassName("l_img active")[0].clientWidth)/2+"px";
-            document.getElementsByClassName("l_img active")[0].style.marginTop = "-" + (this.imgboxheight - document.getElementsByClassName("l_img active")[0].clientHeight)/2 + "px";
+            document.getElementsByClassName("l_img active")[0].style.marginLeft = "-" +  document.getElementsByClassName("l_img active")[0].clientWidth/2+"px";
+            document.getElementsByClassName("l_img active")[0].style.marginTop = "-" + document.getElementsByClassName("l_img active")[0].clientHeight/2 + "px";
         }
     },
     showimgobjs:function (objs, target) {
@@ -85,8 +85,10 @@ l.photos={
                             }
                         }
                         console.log(document.getElementsByClassName("l_img active")[0]);
-                        document.getElementsByClassName("l_img active")[0].style.marginLeft = "-" + (this.imgboxwidth - document.getElementsByClassName("l_img active")[0].clientWidth)/2 + "px";
-                        document.getElementsByClassName("l_img active")[0].style.marginTop = "-" + (this.imgboxheight - document.getElementsByClassName("l_img active")[0].clientHeight)/2 + "px";
+                        console.log(this.imgboxheight);
+
+                        document.getElementsByClassName("l_img active")[0].style.marginLeft = "-" +  document.getElementsByClassName("l_img active")[0].clientWidth/2 + "px";
+                        document.getElementsByClassName("l_img active")[0].style.marginTop = "-" +  document.getElementsByClassName("l_img active")[0].clientHeight/2 + "px";
                     } else if (target.className.match("l_next")) {
                         console.log("next");
                         var l_imgs = document.getElementsByClassName('l_img');
@@ -100,8 +102,9 @@ l.photos={
                         }
                         var obj = document.getElementsByClassName("l_img active")[0];
                         console.log(obj);
-                        obj.style.marginLeft = "-" + (this.imgboxwidth - obj.clientWidth)/2 + "px";
-                        obj.style.marginTop = "-" + (this.imgboxheight - obj.clientHeight)/2 + "px";
+                        console.log("-" + (that.imgboxwidth - obj.clientWidth) / 2 + "px");
+                        obj.style.marginLeft = "-" + obj.clientWidth/2 + "px";
+                        obj.style.marginTop = "-" + obj.clientHeight/2 + "px";
                         console.log(obj);
                     }
                 }

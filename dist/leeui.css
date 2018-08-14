@@ -761,7 +761,7 @@ to{transform:translate3d(0,0,0);opacity:1}
 #LYshowimgs_div{position:fixed;top:0;left:0}
 .l_mu{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.9)}
 .l_imgbox{position:absolute;width:80%;height:80%;top:10%;left:10%;overflow:hidden}
-.l_img{max-height:100%;max-width:100%;display:none;margin:0 auto;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+.l_img{max-height:100%;max-width:100%;display:none;margin:0 auto;position:absolute;top:50%;left:50%}
 .l_img.active{display:block}
 .l_next,.l_prev{font-size:40px;color:#fff;position:absolute;top:50%;margin-top:-20px;z-index:1}
 .l_prev{left:10px}
