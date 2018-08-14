@@ -1,0 +1,310 @@
+
+/* 引用 */
+
+.l-elem-quote {
+    margin-bottom: 10px;
+    padding: 15px;
+    line-height: 22px;
+    border-left: 5px solid #009688;
+    border-radius: 0 2px 2px 0;
+    background-color: #f2f2f2;
+}
+
+.l-quote-nm {
+    border-style: solid;
+    border-width: 1px;
+    border-left-width: 5px;
+    background: none;
+}
+
+
+/* 字段集合 */
+
+.l-elem-field {
+    margin-bottom: 10px;
+    padding: 0;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.l-elem-field legend {
+    margin-left: 20px;
+    padding: 0 10px;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.l-field-title {
+    margin: 10px 0 20px;
+    border-width: 0;
+    border-top-width: 1px;
+}
+
+.l-field-box {
+    padding: 10px 15px;
+}
+
+.l-field-title .l-field-box {
+    padding: 10px 0;
+}
+
+
+
+/* 卡片面板 */
+
+.l-card {
+    margin-bottom: 15px;
+    border-radius: 2px;
+    background-color: #fff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
+}
+
+.l-card:last-child {
+    margin-bottom: 0;
+}
+
+.l-card-header {
+    position: relative;
+    height: 42px;
+    line-height: 42px;
+    padding: 0 15px;
+    border-bottom: 1px solid #f6f6f6;
+    color: #333;
+    border-radius: 2px 2px 0 0;
+    font-size: 14px;
+}
+
+.l-card-body {
+    position: relative;
+    padding: 10px 15px;
+    line-height: 24px;
+}
+
+.l-card-body .l-table {
+    margin: 5px 0;
+}
+
+.l-card .l-tab {
+    margin: 0;
+}
+
+
+/* 折叠面板 */
+
+.l-collapse {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 2px;
+}
+
+.l-colla-item,
+.l-colla-content {
+    border-top-width: 1px;
+    border-top-style: solid;
+}
+
+.l-colla-item:first-child {
+    border-top: none;
+}
+
+.l-colla-title {
+    position: relative;
+    height: 42px;
+    line-height: 42px;
+    padding: 0 15px 0 35px;
+    color: #333;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.l-colla-content {
+    display: none;
+    padding: 10px 15px;
+    line-height: 22px;
+    color: #666;
+}
+
+.l-colla-icon {
+    position: absolute;
+    left: 15px;
+    top: 0;
+    font-size: 14px;
+}
+
+/** 富文本编辑器 **/
+
+.l-layedit {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 2px;
+}
+
+.l-layedit-tool {
+    padding: 3px 5px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    font-size: 0;
+}
+
+.layedit-tool-fixed {
+    position: fixed;
+    top: 0;
+    border-top: 1px solid #e2e2e2;
+}
+
+.l-layedit-tool .layedit-tool-mid,
+.l-layedit-tool .l-icon {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 14px;
+}
+
+.l-layedit-tool .l-icon {
+    position: relative;
+    width: 32px;
+    height: 30px;
+    line-height: 30px;
+    margin: 3px 5px;
+    border-radius: 2px;
+    color: #777;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.l-layedit-tool .l-icon:hover {
+    color: #393D49;
+}
+
+.l-layedit-tool .l-icon:active {
+    color: #000;
+}
+
+.l-layedit-tool .layedit-tool-active {
+    background-color: #e2e2e2;
+    color: #000;
+}
+
+.l-layedit-tool .l-disabled,
+.l-layedit-tool .l-disabled:hover {
+    color: #d2d2d2;
+    cursor: not-allowed;
+}
+
+.l-layedit-tool .layedit-tool-mid {
+    width: 1px;
+    height: 18px;
+    margin: 0 10px;
+    background-color: #d2d2d2;
+}
+
+.layedit-tool-html {
+    width: 50px !important;
+    font-size: 30px !important;
+}
+
+.layedit-tool-b,
+.layedit-tool-code,
+.layedit-tool-help {
+    font-size: 16px !important;
+}
+
+.layedit-tool-d,
+.layedit-tool-unlink,
+.layedit-tool-face,
+.layedit-tool-image {
+    font-size: 18px !important;
+}
+
+.layedit-tool-image input {
+    position: absolute;
+    font-size: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.01;
+    filter: Alpha(opacity=1);
+    cursor: pointer;
+}
+
+.l-layedit-iframe iframe {
+    display: block;
+    width: 100%;
+}
+
+#LAY_layedit_code {
+    overflow: hidden;
+}
+
+/** 文件上传 **/
+
+.l-upload-file {
+    display: none!important;
+    opacity: .01;
+    filter: Alpha(opacity=1);
+}
+
+.l-upload-list {
+    margin: 10px 0;
+}
+
+.l-upload-choose {
+    padding: 0 10px;
+    color: #999;
+}
+
+.l-upload-drag {
+    position: relative;
+    display: inline-block;
+    padding: 30px;
+    border: 1px dashed #e2e2e2;
+    background-color: #fff;
+    text-align: center;
+    cursor: pointer;
+    color: #999;
+}
+
+.l-upload-drag .l-icon {
+    font-size: 50px;
+    color: $basecolor;
+}
+
+.l-upload-drag[lay-over] {
+    border-color: $basecolor
+}
+
+.l-upload-form {
+    display: inline-block;
+}
+
+.l-upload-iframe {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 0;
+    visibility: hidden
+}
+
+.l-upload-wrap {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.l-upload-wrap .l-upload-file {
+    display: block!important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    font-size: 100px;
+    width: 100%;
+    height: 100%;
+    opacity: .01;
+    filter: Alpha(opacity=1);
+    cursor: pointer;
+}
+
+

@@ -1,0 +1,65 @@
+#LYshowimgs_div{
+        position: fixed;
+        top:0;
+        left:0;
+    }
+        .l_mu{
+            position: absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+        }
+        .l_imgbox{
+            position: absolute;
+            width:80%;
+            height:80%;
+            top:10%;
+            left:10%;
+            overflow: hidden;
+        }
+        .l_img{
+            max-height: 100%;
+            max-width: 100%;
+            display: none;
+            margin:0 auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .l_img.active{
+            display:block;
+        }
+        .l_prev,.l_next{
+            font-size: 40px;
+            color:#fff;
+            position: absolute;
+            top:50%;
+            margin-top: -20px;
+            z-index: 1;
+        }
+        .l_prev{
+            left:10px;
+        }
+        .l_next{
+            right:10px;
+        }
+        .l_closebtn{
+            width:150px;
+            height:150px;
+            position: absolute;
+            z-index: 1;
+            top:-75px;
+            right: -75px;
+            background: rgba(255,255,255,.5);
+            border-radius: 50%;
+        }
+        .l_closebtna{
+            position: absolute;
+            top: 85px;
+            left: 32px;
+            font-size: 35px;
+            font-weight: bold;
+        }

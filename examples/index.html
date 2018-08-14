@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../dist/leeui.css">
+    <script src="../dist/leeui.js"></script>
+</head>
+<style>
+    .l-body{
+        margin-top:10px;
+    }
+</style>
+<body>
+    <div class="l-header l-inverse">
+        <div class="l-main">
+            <a class="logo" href="/">
+              <img src="//res.l.com/static/images/l/logo.png" alt="l">
+            </a>
+            <ul class="l-nav l-right">
+                <li class="l-nav-item l-this">
+                    <a href="/doc/">文档</a>
+                </li>
+                <li class="l-nav-item ">
+                    <a href="/demo/">示例</a>
+                </li>
+                <li class="l-nav-item l-hide-xs">
+                    <a href="http://fly.l.com/" target="_blank">社区</a>
+                </li>
+                <li class="l-nav-item">
+                    <a href="javascript:;">周边<span class="l-nav-more"></span></a>
+                    <dl class="l-nav-child">
+                        <dd class="l-hide-sm l-show-xs"><a href="http://fly.l.com/" target="_blank">社区交流</a>
+                            <hr>
+                        </dd>
+                        <dd><a href="http://layim.l.com/" target="_blank">即时聊天</a></dd>
+                        <hr>
+                        <dd><a href="/admin/" target="_blank">后台模板</a></dd>
+                        <dd><a href="/template/fly/" target="_blank">社区模板</a></dd>
+                        <dd><a href="/template/xianyan/" target="_blank">轻博客模板<span class="l-badge-dot"></span></a></dd>
+                        <hr>
+                        <dd><a href="/alone.html" target="_blank">独立组件</a></dd>
+                        <dd><a href="http://fly.l.com/jie/24209/" target="_blank">Axure组件</a></dd>
+                    </dl>
+                </li>
+                <li class="l-nav-item l-hide-xs" lay-unselect="">
+                    <a href="/admin/">官方后台模板<span class="l-badge-dot"></span></a>
+                </li>
+                <span class="l-nav-bar" style="left: 20px; top: 55px; width: 0px; opacity: 0;"></span></ul>
+        </div>
+    </div>
+    <div class="l-body l-main l-row">
+        <div class="l-col-sm2">
+            <ul class="l-nav l-nav-tree" lay-filter="test">
+            <!-- 侧边导航: <ul class="l-nav l-nav-tree l-nav-side"> -->
+              <li class="l-nav-item l-nav-itemed">
+                <a href="#shange">栅格系统</a>
+                <dl class="l-nav-child">
+                  <dd><a href="javascript:;">选项1</a></dd>
+                  <dd><a href="javascript:;">选项2</a></dd>
+                  <dd><a href="###">跳转</a></dd>
+                </dl>
+              </li>
+              <li class="l-nav-item">
+                <a href="javascript:;">解决方案</a>
+                <dl class="l-nav-child">
+                  <dd><a href="###">移动模块</a></dd>
+                  <dd><a href="###">后台模版</a></dd>
+                  <dd><a href="###">电商平台</a></dd>
+                </dl>
+              </li>
+              <li class="l-nav-item"><a href="###">产品</a></li>
+              <li class="l-nav-item"><a href="###">大数据</a></li>
+            </ul>
+        </div>
+        <div class="l-col-sm10">
+            <div id="shange">
+                <h1>栅格系统</h1>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    var nava=document.querySelectorAll(".l-nav-item>a");
+    for(var i=0,len=nava.length;i<len;i++){
+        nava[i].onclick=(function(i){
+            return function(){
+                console.log(i);
+                console.log(this);
+                var className=this.parentNode.className;
+                if(className.match("l-nav-itemed")){
+                    console.log("remove");
+                    console.log(className.replace('l-nav-itemed',''));
+                    this.parentNode.className=className.replace('l-nav-itemed','');
+                }else{
+                    this.parentNode.className+=" l-nav-itemed";
+                }
+            }
+        })(i);
+    }
+</script>

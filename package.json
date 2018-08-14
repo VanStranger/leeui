@@ -1,6 +1,10 @@
 {
   "name": "leeui",
   "version": "1.0.0",
+  "realname": "leeui",
+  "independents": {
+    "leeim": "1.0.0"
+  },
   "description": "融百家之长，成一家之库。",
   "main": "leeui.js",
   "scripts": {
@@ -18,5 +22,34 @@
   "homepage": "https://github.com/VanStranger/leeui#readme",
   "dependencies": {
     "graphicsmagick": "0.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "concat": "^1.0.3",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-babel": "^7.0.1",
+    "gulp-cache": "^1.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-header": "^2.0.5",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-jshint": "^2.1.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-notify": "^3.2.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-ruby-sass": "^3.0.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-uglify": "^3.0.1",
+    "gulp-zip": "^4.2.0",
+    "header": "^0.1.1",
+    "minify": "^3.0.5",
+    "minimist": "^1.2.0",
+    "rename": "^1.0.4",
+    "uglify": "^0.1.5"
   }
 }

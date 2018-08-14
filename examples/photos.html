@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../dist/leeui.css">
+    <script src="../dist/leeui.js"></script>
+</head>
+<body>
+    <style>
+        .imgdemo{
+            display: block;
+            width:300px;
+            margin:10px;
+        }
+    </style>
+
+</body>
+</html>
+<script>
+    var objde=document.createElement("div");
+    objde.innerHTML=`
+    <div class="imgdiv">
+        <img src="./images/74.jpg" alt="" class="imgdemo">
+        <img src="./images/BoscastleHarbour_ZH-CN11554881502_1920x1080.jpg" alt="" class="imgdemo">
+    </div>
+    <div class="imgdiv">
+        <img src="./images/CraterLakeRainbow_ZH-CN10499946200_1920x1080.jpg" alt="" class="imgdemo">
+        <img src="./images/FoxMomKit_ZH-CN9970002026_1920x1080.jpg" alt="" class="imgdemo">
+        <img src="./images/RakotzBridge_ZH-CN9323170058_1920x1080.jpg" alt="" class="imgdemo">
+    </div>`;
+    document.body.appendChild(objde);
+    l.photos.init(".imgdiv");
+</script>
