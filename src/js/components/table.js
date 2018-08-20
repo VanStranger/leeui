@@ -30,10 +30,10 @@ l.table=new (function(){
             obj=obj1;
         }
         var thead="<thead>",tbody="<tbody>";
-        for (var j = 0, len1 = obj.cols.length; j < len1; j++) {
-            thead += "<td>" + obj.cols[j].title + "</td>";
-        }
-        thead+="</thead>";
+        // for (var j = 0, len1 = obj.cols.length; j < len1; j++) {
+        //     thead += "<td>" + obj.cols[j].title + "</td>";
+        // }
+        // thead+="</thead>";
 
         if(data.length==0){
             tbody="zanwushuju";
@@ -45,10 +45,14 @@ l.table=new (function(){
                 tbody+="<tr>";
                 colsarr=obj.cols(data[i]);
                 for(var j=0,len1=colsarr.length;j<len1;j++){
+                    if(i==0){
+                        thead += "<th>" + colsarr[j].title + "</th>";
+                    }
                     tbody += "<td data-label='" + colsarr[j].title + "'>" + colsarr[j].value+"</td>";
                 }
                 tbody+="</tr>";
             }
+            thead+="</thead>";
         }
         tbody+="</tbody>";
         var table=document.createElement("table");

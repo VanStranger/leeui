@@ -2,6 +2,7 @@ l.photos={
     index:0,
     imgboxwidth:0,
     imgboxheight:0,
+    rotateangle:0,
     showimgs:function (imgs, index = -1) {
         var activearr = ['active', ''];
         var clientHeight = document.documentElement.clientHeight || document.body.offsetWidth, clientWidth = document.documentElement.clientWidth || document.body.offsetHeight;
@@ -12,14 +13,17 @@ l.photos={
             divobj.style.width = clientWidth + "px";
             divobj.style.height = clientHeight + "px";
             divobj.setAttribute("id", "LYshowimgs_div");
-            htmlstr = `
-                                        <div class="l_closebtn">
-                                            <a href="###" class="l_closebtna iconfont icon-close"></a>
-                                        </div>
-                                        <a href="###" class="l_prev iconfont icon-left"></a>
-                                        <a href="###" class="l_next iconfont icon-right"></a>
-                                        <div class="l_mu"></div>
-                                        <div class="l_imgbox">`;
+            htmlstr = `<div class="l_closebtn">
+                            <a href="###" class="l_closebtna iconfont icon-close"></a>
+                        </div>
+                        <a href="###" class="l_prev iconfont icon-left"></a>
+                        <a href="###" class="l_next iconfont icon-right"></a>
+                        <div class="l_mu"></div>
+                        <div class="l_imgctrbtns">
+                            <span class="iconfont icon-undo"></span>
+                            <span class="iconfont icon-redo"></span>
+                        </div>
+                        <div class="l_imgbox">`;
             for (var i = 0; i < imgs.length; i++) {
                 var img = imgs[i];
                 htmlstr += `<img src="${img}" alt="" class="l_img ${activearr[index == i ? 0 : 1]}">`;
@@ -106,6 +110,12 @@ l.photos={
                         obj.style.marginLeft = "-" + obj.clientWidth/2 + "px";
                         obj.style.marginTop = "-" + obj.clientHeight/2 + "px";
                         console.log(obj);
+                    } else if (target.className.match("icon-undo")){
+                        that.rotateangle=that.rotateangle==0?3:that.rotateangle-1;
+                        document.getElementsByClassName("l_img active")[0].style.transform=" rotate(" +  that.rotateangle * 90  + "deg)";
+                    } else if (target.className.match("icon-redo")){
+                        that.rotateangle=that.rotateangle==3?0:that.rotateangle+1;
+                        document.getElementsByClassName("l_img active")[0].style.transform=" rotate(" +  that.rotateangle * 90  + "deg)";
                     }
                 }
                 target = target.parentNode;
