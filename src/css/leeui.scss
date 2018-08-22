@@ -2030,28 +2030,16 @@ hr,
     text-decoration: none;
 }
 
-.l-laypage .l-laypage-curr {
-    position: relative;
-}
 
-.l-laypage .l-laypage-curr em {
-    position: relative;
+
+.l-laypage .active {
+    background:#009688;
     color: #fff;
 }
 
-.l-laypage .l-laypage-curr .l-laypage-em {
-    position: absolute;
-    left: -1px;
-    top: -1px;
-    padding: 1px;
-    width: 100%;
-    height: 100%;
-    background-color: $basecolor;
-}
 
-.l-laypage-em {
-    border-radius: 2px;
-}
+
+
 
 .l-laypage-prev em,
 .l-laypage-next em {
@@ -2176,7 +2164,7 @@ hr,
 .l-table-tool,
 .l-table-patch,
 .l-table-mend {
-    background-color: #f8f8f8;
+    background-color: #f1f1f1;
 }
 
 .l-table th,
@@ -2495,7 +2483,6 @@ hr,
     line-height: 26px;
     margin-bottom: 10px;
     border: none;
-    background: none;
 }
 
 .l-table-page .l-laypage a,

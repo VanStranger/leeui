@@ -351,10 +351,7 @@ a cite{font-style:normal;*cursor:pointer}
 .l-laypage em{font-style:normal}
 .l-laypage .l-laypage-spr{color:#999;font-weight:700}
 .l-laypage a{text-decoration:none}
-.l-laypage .l-laypage-curr{position:relative}
-.l-laypage .l-laypage-curr em{position:relative;color:#fff}
-.l-laypage .l-laypage-curr .l-laypage-em{position:absolute;left:-1px;top:-1px;padding:1px;width:100%;height:100%;background-color:#009688}
-.l-laypage-em{border-radius:2px}
+.l-laypage .active{background:#009688;color:#fff}
 .l-laypage-next em,.l-laypage-prev em{font-family:Sim sun;font-size:16px}
 .l-laypage .l-laypage-count,.l-laypage .l-laypage-limits,.l-laypage .l-laypage-skip{margin-left:10px;margin-right:10px;padding:0;border:none}
 .l-laypage .l-laypage-limits{vertical-align:top}
@@ -373,7 +370,7 @@ a cite{font-style:normal;*cursor:pointer}
 .l-table{width:100%;margin:10px 0;background-color:#fff;color:#666}
 .l-table tr{transition:all .3s;-webkit-transition:all .3s}
 .l-table th{text-align:left;font-weight:400}
-.l-table thead tr,.l-table-header,.l-table-mend,.l-table-patch,.l-table-tool{background-color:#f8f8f8}
+.l-table thead tr,.l-table-header,.l-table-mend,.l-table-patch,.l-table-tool{background-color:#f1f1f1}
 .l-table td,.l-table th,.l-table-fixed-r,.l-table-header,.l-table-page,.l-table-tips-main,.l-table-tool,.l-table-view,.l-table[lay-skin=line],.l-table[lay-skin=row]{border-width:1px;border-style:solid;border-color:#eee}
 .l-table th{text-transform:uppercase;font-size:14px;letter-spacing:1px;text-align:center}
 .l-table td,.l-table th{padding:10px}
@@ -415,7 +412,7 @@ a cite{font-style:normal;*cursor:pointer}
 .l-table-tool{position:relative;width:100%;height:50px;line-height:30px;padding:10px 15px;border-width:0;border-bottom-width:1px}
 .l-table-page{position:relative;width:100%;padding:7px 7px 0;border-width:0;border-top-width:1px;margin-bottom:-1px;font-size:12px}
 .l-table-page .l-laypage{margin:0}
-.l-table-page .l-laypage a,.l-table-page .l-laypage span{height:26px;line-height:26px;margin-bottom:10px;border:none;background:0 0}
+.l-table-page .l-laypage a,.l-table-page .l-laypage span{height:26px;line-height:26px;margin-bottom:10px;border:none}
 .l-table-page .l-laypage a,.l-table-page .l-laypage span.l-laypage-curr{padding:0 12px}
 .l-table-page .l-laypage span{margin-left:0;padding:0}
 .l-table-page .l-laypage .l-laypage-prev{margin-left:-7px!important}
