@@ -1,27 +1,6 @@
 l.form={
         l_forms : [],
-        rendertable:function(data){
-            var str="";
-            for(var i=0,len=data.length;i<len;i++){
-                str+=`
-                <tr>
-                  <td>贤心</td>
-                  <td>2016-11-29</td>
-                  <td>人生就像是一场修行</td>
-                </tr>`;
-            }
-            return str;
-        },
-        renderRow(row){
-
-        },
-        initform: function() {
-            this.say();
-            document.getElementsByClassName("l-form")[0].className += " actived";
-            var l_form_objs = document.getElementsByClassName("l-form");
-            for(var i=0,len=l_form_objs.length;i<len;i++){
-                this.l_forms.push({0:l_form_objs[i]});
-            }
+        renderSelect:function(){
             //select
             var l_selectobjs=[],selectdivs=[];
             for (var i = 0, len = this.l_forms.length; i < len; i++) {
@@ -81,6 +60,7 @@ l.form={
                                 siblings[i].className=siblings[i].className.replace("l-this","");
                             }
                             var se_options=selectdivs[l].nextSibling.getElementsByTagName("option");
+                            var select1=selectdivs[l].nextSibling;
                             for(var j=0,se_o_len=se_options.length;j<se_o_len;j++){
                                 var v=se_options[j].getAttribute("value");
                                 if(v==value){
@@ -89,10 +69,15 @@ l.form={
                                     se_options[j].removeAttribute("selected");
                                 }
                             }
-                        }
+                            if(select1.fireEvent)  
+                                select1.fireEvent("onchange")  
+                            else  
+                                select1.onchange()
+                            }
                     })(l);
                 }
             }
+
             //select 下拉菜单
             var l_selectTitles = document.getElementsByClassName("l-select-title");
             for (var i = 0, len = l_selectTitles.length; i < len; i++) {
@@ -105,6 +90,18 @@ l.form={
                     }
                 }
             }
+        },
+        initform: function() {
+            this.say();
+            document.getElementsByClassName("l-form")[0].className += " actived";
+            var l_form_objs = document.getElementsByClassName("l-form");
+            for(var i=0,len=l_form_objs.length;i<len;i++){
+                this.l_forms.push({0:l_form_objs[i]});
+            }
+
+            //select
+            this.renderSelect();
+            
             //radio & checkbox
             for (var i = 0,len= this.l_forms.length;i<len;i++) {
                 var l_inputs=this.l_forms[i][0].getElementsByTagName("input");
