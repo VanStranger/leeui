@@ -103,7 +103,7 @@
 
 
 
-	<form class="l-form" action="">
+	<form class="l-form" action="" l-filter="li">
 	  <div class="l-form-item">
 	    <label class="l-form-label">输入框</label>
 	    <div class="l-input-block">
@@ -170,4 +170,11 @@
 <script src="../dist/leeui.js"></script>
 <script>
 	l.form.initform();
+	document.getElementsByTagName("form")[0].onsubmit=function(e){
+		e.preventDefault();
+		console.log(l);
+		console.log(l.form);
+		console.log(l.form.getFormJson(0));
+		console.log(l.form.getFormJson("li"));
+	}
 </script>

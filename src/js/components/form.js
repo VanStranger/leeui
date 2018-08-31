@@ -33,12 +33,17 @@ l.form={
                     selectdivhtml+='</dl>';
                     selectdivs[selectdivs.length-1].innerHTML=selectdivhtml;
                     l_selectobjs[l_selectobjs.length]=selectdivs[selectdivs.length-1];
+
+                    var previousobj=l_selects[j].previousElementSibling;
+                    if(previousobj && previousobj.className.match("l-form-select")){
+                        previousobj.parentNode.removeChild(previousobj);
+                    }
                     l_selects[j].parentNode.insertBefore(selectdivs[selectdivs.length-1],l_selects[j]);
                 }
             }
 
             //select 切换
-            for(l=0,selectdivslen=selectdivs.length;l<selectdivslen;l++){
+            for(var l=0,selectdivslen=selectdivs.length;l<selectdivslen;l++){
 
                 var s_dds=selectdivs[l].getElementsByTagName('dd');
                 for(var i=0,len=s_dds.length;i<len;i++){
@@ -71,7 +76,7 @@ l.form={
                             }
                             if(select1.fireEvent)  
                                 select1.fireEvent("onchange")  
-                            else  
+                            else  if(select1.onchange)
                                 select1.onchange()
                             }
                     })(l);
@@ -91,18 +96,7 @@ l.form={
                 }
             }
         },
-        initform: function() {
-            this.say();
-            document.getElementsByClassName("l-form")[0].className += " actived";
-            var l_form_objs = document.getElementsByClassName("l-form");
-            for(var i=0,len=l_form_objs.length;i<len;i++){
-                this.l_forms.push({0:l_form_objs[i]});
-            }
-
-            //select
-            this.renderSelect();
-            
-            //radio & checkbox
+        rendeRadioCheckbox(){
             for (var i = 0,len= this.l_forms.length;i<len;i++) {
                 var l_inputs=this.l_forms[i][0].getElementsByTagName("input");
                 for (var j = 0, input_len = l_inputs.length; j < input_len; j++) {
@@ -209,13 +203,28 @@ l.form={
 
             }
         },
+        initform: function() {
+            this.say();
+            document.getElementsByClassName("l-form")[0].className += " actived";
+            var l_form_objs = document.getElementsByClassName("l-form");
+            for(var i=0,len=l_form_objs.length;i<len;i++){
+                this.l_forms.push({0:l_form_objs[i],"filter":l_form_objs[i].getAttribute('l-filter')});
+            }
+
+            //select
+            this.renderSelect();
+            
+            //radio & checkbox
+            this.rendeRadioCheckbox();
+            
+        },
         getFormJson(){
-            var arr=[];
+            var arr=[],l_form;
             var args = Array.prototype.slice.call(arguments);
             if(args.length){
                 if(!isNaN(args[0])){
                     if(this.l_forms.length>parseInt(args[0])){
-                        var l_form=this.l_forms[parseInt(args[0])];
+                        l_form=this.l_forms[parseInt(args[0])];
                         for(var i=0,len=l_form[0].length;i<len;i++){
                             var obj=l_form[0][i];
                             switch(obj.tagName){
@@ -240,6 +249,36 @@ l.form={
                         return arr;
                     }else{
                         return null;
+                    }
+                }else{
+                    for(var i=0,len=args.length;i<len;i++){
+                        if(this.l_forms[i]['filter']==args[0]){
+                            l_form=this.l_forms[i];
+                        }
+                    }
+                    if(l_form){
+                        for(var i=0,len=l_form[0].length;i<len;i++){
+                            var obj=l_form[0][i];
+                            switch(obj.tagName){
+                                case "INPUT":
+                                    if(["text","password"].indexOf(obj.getAttribute("type").toLocaleLowerCase())>-1){
+                                        var item={},key=obj.getAttribute("name");
+                                        if(key){
+                                            item[key]=obj.value;
+                                            arr.push(item);
+                                        }
+                                    }
+                                    if(["checkbox","radio"].indexOf(obj.getAttribute("type").toLocaleLowerCase())>-1 && obj.checked){
+                                        console.log(obj);
+                                        var item={},key=obj.getAttribute("name");
+                                        item[key]=obj.getAttribute("value") || "on";
+                                        arr.push(item);
+                                    }
+                                    break;
+    
+                            }
+                        }
+                        return arr; 
                     }
                 }
             }else{
