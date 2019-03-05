@@ -7,120 +7,44 @@
 	<link rel="stylesheet" href="../dist/leeui.css">
 </head>
 <body>
-<ul class="l-nav" lay-filter="">
-	<li class="l-nav-item">
-		<a href="">最新活动</a>
-	</li>
-	<li class="l-nav-item l-this">
-		<a href="">产品</a>
-	</li>
-	<li class="l-nav-item">
-		<a href="">大数据</a>
-	</li>
-	<li class="l-nav-item">
-		<a href="javascript:;">解决方案</a>
-		<dl class="l-nav-child">
-			<!-- 二级菜单 -->
-			<dd>
-				<a href="">移动模块</a>
-			</dd>
-			<dd>
-				<a href="">后台模版</a>
-			</dd>
-			<dd>
-				<a href="">电商平台</a>
-			</dd>
-		</dl>
-	</li>
-	<li class="l-nav-item">
-		<a href="">社区</a>
-	</li>
 
-	<li class="l-nav-item">
-		<a href="">控制台
-			<span class="l-badge">9</span>
-		</a>
-	</li>
-	<li class="l-nav-item">
-		<a href="">个人中心
-			<span class="l-badge-dot"></span>
-		</a>
-	</li>
-	<li class="l-nav-item">
-		<a href="">
-			<img src="http://t.cn/RCzsdCq" class="l-nav-img">我</a>
-		<dl class="l-nav-child">
-			<dd>
-				<a href="javascript:;">修改信息</a>
-			</dd>
-			<dd>
-				<a href="javascript:;">安全管理</a>
-			</dd>
-			<dd>
-				<a href="javascript:;">退了</a>
-			</dd>
-		</dl>
-	</li>
-</ul>
 
-<ul class="l-nav l-nav-tree" lay-filter="test">
-	<!-- 侧边导航: <ul class="l-nav l-nav-tree l-nav-side"> -->
-	<li class="l-nav-item l-nav-itemed">
-		<a href="javascript:;">默认展开</a>
-		<dl class="l-nav-child">
-			<dd>
-				<a href="javascript:;">选项1</a>
-			</dd>
-			<dd>
-				<a href="javascript:;">选项2</a>
-			</dd>
-			<dd>
-				<a href="">跳转</a>
-			</dd>
-		</dl>
-	</li>
-	<li class="l-nav-item">
-		<a href="javascript:;">解决方案</a>
-		<dl class="l-nav-child">
-			<dd>
-				<a href="">移动模块</a>
-			</dd>
-			<dd>
-				<a href="">后台模版</a>
-			</dd>
-			<dd>
-				<a href="">电商平台</a>
-			</dd>
-		</dl>
-	</li>
-	<li class="l-nav-item">
-		<a href="">产品</a>
-	</li>
-	<li class="l-nav-item">
-		<a href="">大数据</a>
-	</li>
-</ul>
+
 
 
 
 	<form class="l-form" action="" l-filter="li">
+		<input type="hidden" name="id" value="3">
 	  <div class="l-form-item">
 	    <label class="l-form-label">输入框</label>
 	    <div class="l-input-block">
-	      <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="l-input">
+	      <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="l-input" value="sdfsd">
 	    </div>
 	  </div>
 	  <div class="l-form-item">
 	    <label class="l-form-label">密码框</label>
 	    <div class="l-input-inline">
-	      <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="l-input">
+	      <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="l-input" value="dsf">
 	    </div>
 	    <div class="l-form-mid l-word-aux">辅助文字</div>
 	  </div>
 	  <div class="l-form-item">
 	    <label class="l-form-label">选择框</label>
 	    <div class="l-input-block">
-	      <select name="city" l-verify="required">
+	      <select name="city" l-verify="required" l-filter="city">
+	        <option value=""></option>
+	        <option value="0">北京</option>
+	        <option value="1" selected>上海</option>
+	        <option value="2">广州</option>
+	        <option value="3">深圳</option>
+	        <option value="4">杭州</option>
+	      </select>
+	    </div>
+	  </div>
+	  <div class="l-form-item">
+	    <label class="l-form-label">选择框</label>
+	    <div class="l-input-block">
+	      <select name="city" l-verify="required" l-filter="city1">
 	        <option value=""></option>
 	        <option value="0">北京</option>
 	        <option value="1" selected>上海</option>
@@ -164,17 +88,36 @@
 	    </div>
 	  </div>
 	</form>
-	<p class="l-btn l-btn-link">sfds</p>
+	<div class="pagediv"></div>
 </body>
 </html>
 <script src="../dist/leeui.js"></script>
+<!-- <script src="../src/js/components/form.js"></script> -->
 <script>
+	l.page.elem=".pagediv";
+	l.page.render();
 	l.form.initform();
+	l.form.onSelect("city",function(v,t){
+		console.log("select");
+		console.log(v);
+		console.log(t);
+	})
+	l.form.onSelect("city1",function(v,t){
+		console.log("select1");
+		console.log(v);
+		console.log(t);
+	})
+	l.form.onSelect("",function(v,t){
+		console.log("select2");
+		console.log(v);
+		console.log(t);
+	})
 	document.getElementsByTagName("form")[0].onsubmit=function(e){
 		e.preventDefault();
 		console.log(l);
 		console.log(l.form);
 		console.log(l.form.getFormJson(0));
+		console.log(l.form.getFormJson());
 		console.log(l.form.getFormJson("li"));
 	}
 </script>

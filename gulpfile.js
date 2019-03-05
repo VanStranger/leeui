@@ -74,8 +74,8 @@ var argv = require('minimist')(process.argv.slice(2), {
     ver = ver === 'open';
 
     var src = [
-      './src/css/leeui.scss'
       ,'./src/css/components/*.css'
+      ,'./src/css/leeui.scss'
     ]
     ,dir = ver ? release : 'dist'
     ,noteNew = JSON.parse(JSON.stringify(note));

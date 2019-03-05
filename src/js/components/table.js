@@ -45,7 +45,7 @@ l.table=new (function(){
         var thead="<thead>",tbody="<tbody>";
 
         if(data.length==0){
-            tbody="zanwushuju";
+            tbody="<tr><td align='center'>暂无数据</td></tr>";
         }else{
             tbody="";
             var colsarr=[];
@@ -88,16 +88,12 @@ l.table=new (function(){
                     
                 `;
             }else if(pagesize<7){
-                pagehtml+=`
-                    
-                    <a href="###" data-page="1" class="l-tablepage-btn  ${page==1?'active':''}">1</a>
-                    <a href="###" data-page="2" class="l-tablepage-btn  ${page==2?'active':''}">2</a>
-                    <a href="###" data-page="3" class="l-tablepage-btn  ${page==3?'active':''}">3</a>
-                    <a href="###" data-page="4" class="l-tablepage-btn  ${page==4?'active':''}">4</a>
-                    <a href="###" data-page="5" class="l-tablepage-btn  ${page==5?'active':''}">5</a>
-                    <a href="###" data-page="6" class="l-tablepage-btn  ${page==6?'active':''}">6</a>
-                    
-                `;
+                for(var i=1;i<=pagesize;i++){
+
+                    pagehtml+=`             
+                        <a href="###" data-page="${i}" class="l-tablepage-btn  ${page==i?'active':''}">${i}</a> 
+                    `;
+                }
             }else{
                 if(page<4){
                     pagehtml+=`
@@ -190,7 +186,6 @@ l.table=new (function(){
             pagebtns[i].onclick=function(e){
                 if(!this.getAttribute("l-disabled")){
                     var page=this.getAttribute("data-page");
-                    console.log(page)
                     that.page=parseInt(page);
                 }
             }
@@ -198,14 +193,12 @@ l.table=new (function(){
         //页面跳转点击
         document.getElementsByClassName("l-tablepagejump-btn")[0].onclick=function(e){
             var page=this.previousSibling.previousSibling.value;
-            console.log(page);
             that.page=parseInt(page);
         }
 
         //页面limit变化事件
         document.querySelector(obj.elem+" .tablepage-limit-change").onchange=function(){
             var limit=this.value;
-            console.log(limit);
             that.limit=limit;
         }
 

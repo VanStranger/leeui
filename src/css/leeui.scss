@@ -123,6 +123,10 @@ a cite {
     box-sizing: border-box;
 }
 
+.l-imgbg {
+    display: block;
+    width: 100%;
+}
 
 /* 消除第三方ui可能造成的冲突 */
 
@@ -264,6 +268,12 @@ a cite {
 .l-header a:hover {
     transition: all .5s;
     -webkit-transition: all .5s;
+}
+.l-header-logo{
+    display: block;
+    height: 40px;
+    padding: 10px 0 0 50px;
+    float:left;
 }
 
 .l-side {
@@ -1079,7 +1089,15 @@ hr,
     background-color: #e6e6e6;
 }
 
-
+.l-h1 {
+    margin-bottom: 20px;
+    line-height: 60px;
+    padding-bottom: 10px;
+    color: #393D49;
+    border-bottom: 1px solid #eee;
+    font-size: 28px;
+    font-weight: 300;
+}
 /* 文本区域 */
 
 .l-text {
@@ -1284,7 +1302,9 @@ hr,
 .l-btn-xs i {
     font-size: 14px !important;
 }
-
+.l-btn-fluid{
+    width:100%;
+}
 
 /* 按钮组 */
 
@@ -2180,6 +2200,7 @@ hr,
     border-width: 1px;
     border-style: solid;
     border-color: #eee;
+    background: #fff;
 }
 
 
@@ -2463,10 +2484,8 @@ hr,
     position: relative;
     width: 100%;
     padding: 7px 7px 0;
-    border-width: 0;
-    border-top-width: 1px;
+    border-width: 1px;
     /*height: 41px;*/
-    margin-bottom: -1px;
     font-size: 12px;
 }
 
@@ -2726,6 +2745,9 @@ body .l-table-tips .l-layer-content {
     *zoom: 1;
     vertical-align: middle;
     line-height: 60px;
+    &.l-this{
+        background: #5fb878;
+    }
 }
 
 .l-nav .l-nav-item a {
@@ -3682,6 +3704,125 @@ body .l-util-face .l-layer-content {
     border: 1px solid #eb7350;
     background: #fff9ec;
 }
+
+//legend
+legend {
+    margin-left: 20px;
+    padding: 0 10px;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+
+// 图片添加切换
+.bannerimgsdiv{
+    padding:10px;
+    overflow: hidden;
+
+}
+.bannerimgdiv{
+    overflow: hidden;
+    float: left;
+    width:320px;
+    height: 200px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border:1px solid gray;
+    position: relative;
+    text-align: center;
+}
+.overshow{
+    display:none;
+    position: absolute;
+    width:100%;
+    height:100%;
+    top:0;left:0;
+    text-align: center;
+}
+.bannerimgdiv:hover .overshow{
+    display:block;
+}
+.ping{
+    position: absolute;
+    width:100%;
+    height:100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+.bannerediticon{
+    position: relative;;
+    z-index: 2;
+    font-size: 80px;
+    color:#fff;
+    line-height: 200px;
+}
+.banner_add_icon{
+    font-size: 80px;
+    color:#000;
+    line-height: 200px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /** 动画 **/

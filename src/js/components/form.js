@@ -1,11 +1,58 @@
 l.form={
         l_forms : [],
+
+
+        selectfns:[],
+        onSelect:function(filter,fn){
+            if(!fn){
+                fn=function(){
+
+                };
+            }
+            this.selectfns.push([filter,fn]);
+        },
+        onSelectFn:function(filter,value,title){
+            var filter,fn;
+            for(var i=0,len=this.selectfns.length;i<len;i++){
+                infilter=this.selectfns[i][0];
+                fn=this.selectfns[i][1];
+                if(!infilter || infilter===filter){
+                    fn(value,title);
+                }
+            }
+        },
+
+        submitfns:[],
+        onSubmit:function(filter,fn){
+            if(!fn){
+                fn=function(){
+
+                };
+            }
+            this.submitfns.push([filter,fn]);
+        },
+        onSubmitFn:function(filter,data){
+            var filter,fn;
+            for(var i=0,len=this.submitfns.length;i<len;i++){
+                infilter=this.submitfns[i][0];
+                fn=this.submitfns[i][1];
+                if(!infilter || infilter===filter){
+                    fn(value,title);
+                }
+            }
+        },
+
+
         renderSelect:function(){
             //select
+            var that=this;
             var l_selectobjs=[],selectdivs=[];
             for (var i = 0, len = this.l_forms.length; i < len; i++) {
                 var l_selects = this.l_forms[i][0].getElementsByTagName("select");
                 for (var j = 0, select_len = l_selects.length; j < select_len; j++) {
+                    l_selects[j].onchange=function(){
+                        that.renderSelect();
+                    }
                     var l_options=l_selects[j].getElementsByTagName("option");
                     var l_select_name=l_selects[j].getAttribute("name");
                     var l_select_title=l_selects[j].options.length?l_selects[j].options[0].innerText:"";
@@ -32,6 +79,7 @@ l.form={
                                             '<dl class="l-anim l-anim-upbit" style="">'+selectdivhtml;
                     selectdivhtml+='</dl>';
                     selectdivs[selectdivs.length-1].innerHTML=selectdivhtml;
+                    selectdivs[selectdivs.length-1].setAttribute("l-filter",l_selects[j].getAttribute("l-filter"));
                     l_selectobjs[l_selectobjs.length]=selectdivs[selectdivs.length-1];
 
                     var previousobj=l_selects[j].previousElementSibling;
@@ -44,10 +92,10 @@ l.form={
 
             //select 切换
             for(var l=0,selectdivslen=selectdivs.length;l<selectdivslen;l++){
-
+                var filter=selectdivs[l].getAttribute("l-filter");
                 var s_dds=selectdivs[l].getElementsByTagName('dd');
                 for(var i=0,len=s_dds.length;i<len;i++){
-                    s_dds[i].onclick=(function(l){
+                    s_dds[i].onclick=(function(l,filter){
                         return function(e){
                             var value=this.getAttribute("l-value");
                             var title=this.innerText;
@@ -78,8 +126,10 @@ l.form={
                                 select1.fireEvent("onchange")  
                             else  if(select1.onchange)
                                 select1.onchange()
+                            that.onSelectFn(filter,value,title);
+
                             }
-                    })(l);
+                    })(l,filter);
                 }
             }
 
@@ -97,24 +147,33 @@ l.form={
             }
         },
         rendeRadioCheckbox(){
+            var that=this;
             for (var i = 0,len= this.l_forms.length;i<len;i++) {
                 var l_inputs=this.l_forms[i][0].getElementsByTagName("input");
                 for (var j = 0, input_len = l_inputs.length; j < input_len; j++) {
                     switch(l_inputs[j].getAttribute("type")){
                         //radio
                         case "radio":
+                            l_inputs[j].onchange=function(){
+                                that.rendeRadioCheckbox();
+                            }
+
                             //渲染radio
                             var r_title=l_inputs[j].getAttribute('title');
                             var r_value=l_inputs[j].getAttribute("value");
                             var r_name=l_inputs[j].getAttribute("name");
                             var radiodiv = document.createElement("div");
                             if(l_inputs[j].checked){
-                                radiodiv.className='l-unselect l-form-radio l-form-radioed';
+                                radiodiv.className='l-form-radio l-form-radioed';
                                 radiodiv.innerHTML = '<i class="l-anim l-icon l-anim-scaleSpring icon-radiochecked"></i><div>'+r_title+'</div>';
                             }else{
-                                radiodiv.className='l-unselect l-form-radio';
+                                radiodiv.className='l-form-radio';
                                 radiodiv.innerHTML = '<i class="l-anim l-icon icon-radio"></i><div>'+r_title+'</div>';
 
+                            }
+                            var previousobj=l_inputs[j].previousElementSibling;
+                            if(previousobj && previousobj.className.match("l-form-radio")){
+                                previousobj.parentNode.removeChild(previousobj);
                             }
                             radiodiv.setAttribute("l-value", r_value);
                             radiodiv.setAttribute("l-name", r_name);
@@ -124,7 +183,6 @@ l.form={
                                 var r_value=this.getAttribute("l-value");
                                 var l_radionames=document.getElementsByName(radioname);
                                 for(var k=0,l_radioname_len=l_radionames.length;k<l_radioname_len;k++){
-                                    console.log(l_radionames[k].getAttribute("value"));
                                     if(l_radionames[k].getAttribute("value")==r_value){
                                         l_radionames[k].setAttribute("checked", true);
                                     }else{
@@ -147,16 +205,23 @@ l.form={
                             }
                             break;
                         case "checkbox":
+                            l_inputs[j].onchange=function(){
+                                that.rendeRadioCheckbox();
+                            }
                             //渲染radio
                             var c_title=l_inputs[j].getAttribute('title');
                             var checkboxdiv = document.createElement("div");
                             if(!l_inputs[j].getAttribute("l-skin")){
                                 if(l_inputs[j].checked){
-                                    checkboxdiv.className='l-unselect l-form-checkbox l-form-checked';
+                                    checkboxdiv.className='l-form-checkbox l-form-checked';
                                     checkboxdiv.innerHTML = '<span>'+c_title+'</span><i class="l-icon icon-complete"></i>';
                                 }else{
-                                    checkboxdiv.className='l-unselect l-form-checkbox';
+                                    checkboxdiv.className='l-form-checkbox';
                                     checkboxdiv.innerHTML = '<span>'+c_title+'</span><i class="l-icon  icon-complete"></i>';
+                                }
+                                var previousobj=l_inputs[j].previousElementSibling;
+                                if(previousobj && previousobj.className.match("l-form-checkbox")){
+                                    previousobj.parentNode.removeChild(previousobj);
                                 }
                                 l_inputs[j].parentNode.insertBefore(checkboxdiv,l_inputs[j]);
                                 checkboxdiv.onclick=function(e){
@@ -171,16 +236,20 @@ l.form={
                             }else if(l_inputs[j].getAttribute("l-skin")=="switch"){
                                 var l_text=l_inputs[j].getAttribute("l-text");
                                 var l_text_arr=l_text.split("|");
-                                var switchhtml='<div class="l-unselect l-form-switch l-form-onswitch" lay-skin="_switch"><em>ON</em><i></i></div>';
+                                var switchhtml='<div class="l-form-switch l-form-onswitch" lay-skin="_switch"><em>ON</em><i></i></div>';
                                 var checkboxdiv = document.createElement("div");
                                 checkboxdiv.setAttribute("l-text", l_text);
                                  if(l_inputs[j].checked){
-                                    checkboxdiv.className='l-unselect l-form-switch l-form-onswitch';
+                                    checkboxdiv.className='l-form-switch l-form-onswitch';
                                     checkboxdiv.innerHTML = '<em>'+l_text_arr[0]+'</em><i></i>';
                                  }else{
-                                    checkboxdiv.className='l-unselect l-form-switch';
+                                    checkboxdiv.className='l-form-switch';
                                     checkboxdiv.innerHTML = '<em>'+l_text_arr[1]+'</em><i></i>';
                                  }
+                                var previousobj=l_inputs[j].previousElementSibling;
+                                if(previousobj && previousobj.className.match("l-form-switch")){
+                                    previousobj.parentNode.removeChild(previousobj);
+                                }
                                  l_inputs[j].parentNode.insertBefore(checkboxdiv,l_inputs[j]);
                                  checkboxdiv.onclick=function(e){
                                     var l_text=this.getAttribute("l-text");
@@ -204,11 +273,15 @@ l.form={
             }
         },
         initform: function() {
-            this.say();
+            var that=this;
             document.getElementsByClassName("l-form")[0].className += " actived";
-            var l_form_objs = document.getElementsByClassName("l-form");
+            var l_form_objs = document.getElementsByClassName("l-form"),filter;
             for(var i=0,len=l_form_objs.length;i<len;i++){
-                this.l_forms.push({0:l_form_objs[i],"filter":l_form_objs[i].getAttribute('l-filter')});
+                filter=l_form_objs[i].getAttribute('l-filter');
+                this.l_forms.push({0:l_form_objs[i],"filter":filter});
+                l_form_objs[i].onSubmit=(function(){
+                    that.onSubmitFn(filter);
+                })(i,filter);
             }
 
             //select
@@ -229,20 +302,29 @@ l.form={
                             var obj=l_form[0][i];
                             switch(obj.tagName){
                                 case "INPUT":
-                                    if(["text","password"].indexOf(obj.getAttribute("type").toLocaleLowerCase())>-1){
+                                    if(["text","password","hidden"].indexOf(obj.getAttribute("type").toLocaleLowerCase())>-1){
                                         var item={},key=obj.getAttribute("name");
                                         if(key){
-                                            item[key]=obj.value;
+                                            item['name']=key;
+                                            item['value']=obj.value;
                                             arr.push(item);
                                         }
                                     }
                                     if(["checkbox","radio"].indexOf(obj.getAttribute("type").toLocaleLowerCase())>-1 && obj.checked){
-                                        console.log(obj);
                                         var item={},key=obj.getAttribute("name");
-                                        item[key]=obj.getAttribute("value") || "on";
+                                        item['name']=key;
+                                        item['value']=obj.value || "on";;
                                         arr.push(item);
                                     }
-                                    break;
+                                break;
+                                default:
+                                    var item={},key=obj.getAttribute("name");
+                                    if(key){
+                                        item['name']=key;
+                                        item['value']=obj.value;
+                                        arr.push(item);
+                                    }
+                                break;
 
                             }
                         }
@@ -254,6 +336,7 @@ l.form={
                     for(var i=0,len=args.length;i<len;i++){
                         if(this.l_forms[i]['filter']==args[0]){
                             l_form=this.l_forms[i];
+                            break;
                         }
                     }
                     if(l_form){
@@ -261,20 +344,29 @@ l.form={
                             var obj=l_form[0][i];
                             switch(obj.tagName){
                                 case "INPUT":
-                                    if(["text","password"].indexOf(obj.getAttribute("type").toLocaleLowerCase())>-1){
+                                    if(["text","password","hidden"].indexOf(obj.getAttribute("type").toLocaleLowerCase())>-1){
                                         var item={},key=obj.getAttribute("name");
                                         if(key){
-                                            item[key]=obj.value;
+                                            item['name']=key;
+                                            item['value']=obj.value;
                                             arr.push(item);
                                         }
                                     }
                                     if(["checkbox","radio"].indexOf(obj.getAttribute("type").toLocaleLowerCase())>-1 && obj.checked){
-                                        console.log(obj);
                                         var item={},key=obj.getAttribute("name");
-                                        item[key]=obj.getAttribute("value") || "on";
+                                        item['name']=key;
+                                        item['value']=obj.value || "on";;
                                         arr.push(item);
                                     }
-                                    break;
+                                break;
+                                default:
+                                    var item={},key=obj.getAttribute("name");
+                                    if(key){
+                                        item['name']=key;
+                                        item['value']=obj.value;
+                                        arr.push(item);
+                                    }
+                                break;
     
                             }
                         }
@@ -282,24 +374,7 @@ l.form={
                     }
                 }
             }else{
-                console.log("noarguments");
+                return this.getFormJson(0);
             }
         },
-        say:function(){
-            if(!this.silent){
-                console.log(`
-                    　　１１１１１１１１１　　　　　　　　　　　　　　　　１１　１１１１１　　　　　１１　　　　　　　１１１１１１１１１１　　　　１１１１１１１　　　　　　　　　　　　　　
-                    　　１　１１１１１　１　　　　　　　　　　　　　　１１１　　　　１１１　　　　１１１１１１　　　　　　　　　１１　　　　　　　１　１１１　１　　　　　　　　　　　　　　
-                    　　１１１１１１１１１１　　　　　　　　　　　　　１１１１１　１１１　　　　　１１　　１１　　　　　　　　１１１１　　　　　　１　１１１　１　　　　　　　　　　　　　　
-                    　１１１１１１１１１１１　　　　　　　　　　　　　　１１１１　１１　　　　　１１１　１１　　　　　　　　１１１１１１　　　　　１　１１１　１　　　　　　　　　　　　　　
-                    　　　１　　１１１　　　　　　　　　　　　　　　　　１１１１１１１１１１　　１１　１１１　　　　　　　１１１１　１１１　　　　１　１１１　１　　　　　　　　　　　　　　
-                    　　　　　１１１　１１　　　　　　　　　　　　　　１１１１　　　１　　　　　　　　１１１１　　　　１１１１　１　　１１　　　　１　１１１　１　　　　１１１　　　　　　　
-                    　１１１１１１１１１１１　　１１　　　　　　　　　　　１１１　　１　　　　　　１１１１１１１　　　１１　　　１　　　１　　　　１１１１１　　１　　　１１１　　　　　　　
-                    　　　　　１１　　　　　　　１１　　　　　　　　　１１１１１　１１　　　　１１１１　　　１１１１　　　　　　１　　　　　　　１１１１　１　　１１　　１１１　　　　　　　
-                    　　　　１１１　　　　　　　１１　　　　　　　　　１１　　１１１１　　　　１１１　　　　　１１１　　　　　　１　　　　　　１１１１　　１１１１１　　　１　　　　　　　　
-                    　　　　１１１　　　　　　　１１　　　　　　　　　　　　　　　１　　　　　　　　　　　　　　　　　　　　　　１　　　　　　　１　　　　　　　　　　　　　　　　　　　　　
-                    　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
-                    　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　`);
-            }
-        }
     };

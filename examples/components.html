@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="../dist/leeui.css">
+</head>
+<body>
+
+	<div class="pagediv"></div>
+</body>
+</html>
+<script src="../src/js/components/components.js"></script>
+<!-- <script src="../src/js/components/form.js"></script> -->
+<script>
+	var lpage=new l.page();
+	lpage.render({
+		elem:".pagediv",
+		now:20,
+		max:99,
+		onPage:function(e,page,max){
+			lpage.now=page;
+			lpage.render();
+			
+		}
+	});
+	lpage.max=100;
+</script>
+<style>
+
+</style>

@@ -78,7 +78,6 @@ l.photos={
                             document.body.removeChild(obj);
                         }
                     } else if (target.className.match("l_prev")) {
-                        console.log("prev");
                         var l_imgs = document.getElementsByClassName('l_img');
                         index = index > 0 ? index - 1 : l_imgs.length - 1;
                         for (var i = 0, len = l_imgs.length; i < len; i++) {
@@ -88,13 +87,10 @@ l.photos={
                                 l_imgs[i].className = "l_img";
                             }
                         }
-                        console.log(document.getElementsByClassName("l_img active")[0]);
-                        console.log(this.imgboxheight);
 
                         document.getElementsByClassName("l_img active")[0].style.marginLeft = "-" +  document.getElementsByClassName("l_img active")[0].clientWidth/2 + "px";
                         document.getElementsByClassName("l_img active")[0].style.marginTop = "-" +  document.getElementsByClassName("l_img active")[0].clientHeight/2 + "px";
                     } else if (target.className.match("l_next")) {
-                        console.log("next");
                         var l_imgs = document.getElementsByClassName('l_img');
                         index = (index == l_imgs.length - 1) ? 0 : (index + 1);
                         for (var i = 0, len = l_imgs.length; i < len; i++) {
@@ -105,11 +101,8 @@ l.photos={
                             }
                         }
                         var obj = document.getElementsByClassName("l_img active")[0];
-                        console.log(obj);
-                        console.log("-" + (that.imgboxwidth - obj.clientWidth) / 2 + "px");
                         obj.style.marginLeft = "-" + obj.clientWidth/2 + "px";
                         obj.style.marginTop = "-" + obj.clientHeight/2 + "px";
-                        console.log(obj);
                     } else if (target.className.match("icon-undo")){
                         that.rotateangle=that.rotateangle==0?3:that.rotateangle-1;
                         document.getElementsByClassName("l_img active")[0].style.transform=" rotate(" +  that.rotateangle * 90  + "deg)";
