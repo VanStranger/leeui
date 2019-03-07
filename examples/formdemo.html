@@ -44,7 +44,7 @@
 	  <div class="l-form-item">
 	    <label class="l-form-label">选择框</label>
 	    <div class="l-input-block">
-	      <select name="city" l-verify="required" l-filter="city1">
+	      <select name="city" l-verify="required" l-filter="city1" l-search=true>
 	        <option value=""></option>
 	        <option value="0">北京</option>
 	        <option value="1" selected>上海</option>
@@ -94,8 +94,9 @@
 <script src="../dist/leeui.js"></script>
 <!-- <script src="../src/js/components/form.js"></script> -->
 <script>
-	l.page.elem=".pagediv";
-	l.page.render();
+	var lpage=new l.page();
+	lpage.elem=".pagediv";
+	lpage.render();
 	l.form.initform();
 	l.form.onSelect("city",function(v,t){
 		console.log("select");

@@ -54,7 +54,7 @@ l.form={
                         that.renderSelect();
                     }
                     var l_options=l_selects[j].getElementsByTagName("option");
-                    var l_select_name=l_selects[j].getAttribute("name");
+                    var l_select_search=l_selects[j].getAttribute("l-search")===null?false:true;
                     var l_select_title=l_selects[j].options.length?l_selects[j].options[0].innerText:"";
                     selectdivs[selectdivs.length] = document.createElement("div");
                     selectdivs[selectdivs.length-1].className='l-unselect l-form-select';
@@ -62,18 +62,18 @@ l.form={
                     for(var k=0,l_op_len=l_options.length;k<l_op_len;k++){
                         var l_op_value=l_options[k].getAttribute("value");
                         var l_op_title=l_options[k].innerText;
-                        var sed=l_options[k].selected;
+                        var isselected=l_options[k].selected;
                         if(!l_op_value && !l_op_title){
                             selectdivhtml +='<dd l-value="" class="l-select-tips">请选择</dd>';
                         }else{
-                            sed && (l_select_title=l_op_title);
-                            selectdivhtml +='<dd l-value="'+l_op_value+'" class="'+ (sed?"l-this":"") +'">'+l_op_title+'</dd>';
+                            isselected && (l_select_title=l_op_title);
+                            selectdivhtml +='<dd l-value="'+l_op_value+'" class="'+ (isselected?"l-this":"") +'">'+l_op_title+'</dd>';
 
                         }
 
                     }
                     selectdivhtml =         '<div class="l-select-title">'+
-                                                '<input type="text" placeholder="请选择" value="'+l_select_title+'" readonly="" class="l-input l-unselect">'+
+                                                '<input type="text" placeholder="请选择" value="'+l_select_title+'" '+(l_select_search?'':'readonly=""')+' class="l-input l-unselect l-select-searchinput">'+
                                                 '<i class="l-edge"></i>'+
                                             '</div>'+
                                             '<dl class="l-anim l-anim-upbit" style="">'+selectdivhtml;
@@ -90,10 +90,28 @@ l.form={
                 }
             }
 
-            //select 切换
             for(var l=0,selectdivslen=selectdivs.length;l<selectdivslen;l++){
+                //select 搜索
+                var l_select_searchinput=selectdivs[l].getElementsByClassName("l-select-searchinput");
+                console.log(l_select_searchinput);
                 var filter=selectdivs[l].getAttribute("l-filter");
                 var s_dds=selectdivs[l].getElementsByTagName('dd');
+                l_select_searchinput[0].oninput=(function(){
+                    return function(e){
+                        var v=this.value;
+                        for(var i=0;i<s_dds.length;i++){
+                            if(s_dds[i].innerText.indexOf(v)===-1){
+                                if(s_dds[i].className.indexOf("l-hide")===-1){
+                                    s_dds[i].className=s_dds[i].className+" l-hide";
+                                }
+                            }else{
+                                s_dds[i].className=s_dds[i].className.replace(/\sl\-hide/g,"");
+                                s_dds[i].className=s_dds[i].className.replace(/l\-hide\s/g,"");
+                            }
+                        }
+                    }
+                })(s_dds);
+                //select 切换
                 for(var i=0,len=s_dds.length;i<len;i++){
                     s_dds[i].onclick=(function(l,filter){
                         return function(e){
