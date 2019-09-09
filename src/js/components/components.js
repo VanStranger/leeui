@@ -1,4 +1,4 @@
-l={};
+
 l.page=function(){
     var elem="";
     var now=1;
@@ -20,7 +20,7 @@ l.page=function(){
             this.elem=config.elem;
         }
         if(config.now){
-            this.now=parseInt(this.now);
+            this.now=parseInt(config.now);
         }
         if(config.max){
             this.max=parseInt(config.max);

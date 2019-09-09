@@ -31,7 +31,7 @@
 	  <div class="l-form-item">
 	    <label class="l-form-label">选择框</label>
 	    <div class="l-input-block">
-	      <select name="city" l-verify="required" l-filter="city">
+	      <select name="city" l-verify="required" l-filter="city"  l-search=true>
 	        <option value=""></option>
 	        <option value="0">北京</option>
 	        <option value="1" selected>上海</option>
@@ -91,27 +91,30 @@
 	<div class="pagediv"></div>
 </body>
 </html>
-<script src="../dist/leeui.js"></script>
-<!-- <script src="../src/js/components/form.js"></script> -->
+<!-- <script src="../dist/leeui.js"></script> -->
+<script src="../src/js/components/form.js"></script>
 <script>
-	var lpage=new l.page();
-	lpage.elem=".pagediv";
-	lpage.render();
+	// var lpage=new l.page();
+	// lpage.elem=".pagediv";
+	// lpage.render();
 	l.form.initform();
-	l.form.onSelect("city",function(v,t){
+	l.form.onSelect("city",function(v,t,o){
 		console.log("select");
 		console.log(v);
 		console.log(t);
+		console.log(o);
 	})
-	l.form.onSelect("city1",function(v,t){
+	l.form.onSelect("city1",function(v,t,o){
 		console.log("select1");
 		console.log(v);
 		console.log(t);
+		console.log(o);
 	})
-	l.form.onSelect("",function(v,t){
+	l.form.onSelect("",function(v,t,o){
 		console.log("select2");
 		console.log(v);
 		console.log(t);
+		console.log(o);
 	})
 	document.getElementsByTagName("form")[0].onsubmit=function(e){
 		e.preventDefault();

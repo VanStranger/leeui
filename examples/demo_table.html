@@ -94,6 +94,8 @@
     <div id="table">
 
     </div>
+
+    <div class="pagediv"></div>
 </body>
 
 </html>
@@ -112,10 +114,10 @@
             datachange:function(page,limit){
                 console.log(page,limit);
                 l.table.data=[
-                    {"name":"gfgrr"},
-                    {"name":"gfgrr"},
-                    {"name":"gfgrr"},
-                    {"name":"gfgrr"},
+                    {"name":"sdfsdf"},
+                    {"name":"sdfsdf"},
+                    {"name":"sdfsdf"},
+                    {"name":"sdfsdf"},
                 ];
                 
             },
@@ -127,4 +129,18 @@
         {"name":"sdfsdf"},
     ];
     l.table.amount=50;
+
+
+    var lpage=new l.page();
+	lpage.render({
+		elem:".pagediv",
+		now:5,
+		max:51,
+		onPage:function(e,page,max){
+			lpage.now=page;
+			lpage.render();
+            
+			
+		}
+	});
 </script>

@@ -1,3 +1,4 @@
+
 l.form={
         l_forms : [],
 
@@ -11,13 +12,13 @@ l.form={
             }
             this.selectfns.push([filter,fn]);
         },
-        onSelectFn:function(filter,value,title){
+        onSelectFn:function(filter,value,title,obj){
             var filter,fn;
             for(var i=0,len=this.selectfns.length;i<len;i++){
                 infilter=this.selectfns[i][0];
                 fn=this.selectfns[i][1];
                 if(!infilter || infilter===filter){
-                    fn(value,title);
+                    fn(value,title,obj);
                 }
             }
         },
@@ -72,11 +73,11 @@ l.form={
                         }
 
                     }
-                    selectdivhtml =         '<div class="l-select-title">'+
-                                                '<input type="text" placeholder="请选择" value="'+l_select_title+'" '+(l_select_search?'':'readonly=""')+' class="l-input l-unselect l-select-searchinput">'+
-                                                '<i class="l-edge"></i>'+
-                                            '</div>'+
-                                            '<dl class="l-anim l-anim-upbit" style="">'+selectdivhtml;
+                    selectdivhtml = '<div class="l-select-title">'+
+                                        '<input type="text" placeholder="请选择" value="'+l_select_title+'" '+(l_select_search?'':'readonly=""')+' class="l-input l-unselect l-select-searchinput">'+
+                                        '<i class="l-edge"></i>'+
+                                    '</div>'+
+                                    '<dl class="l-anim l-anim-upbit" style="">'+selectdivhtml;
                     selectdivhtml+='</dl>';
                     selectdivs[selectdivs.length-1].innerHTML=selectdivhtml;
                     selectdivs[selectdivs.length-1].setAttribute("l-filter",l_selects[j].getAttribute("l-filter"));
@@ -93,10 +94,9 @@ l.form={
             for(var l=0,selectdivslen=selectdivs.length;l<selectdivslen;l++){
                 //select 搜索
                 var l_select_searchinput=selectdivs[l].getElementsByClassName("l-select-searchinput");
-                console.log(l_select_searchinput);
                 var filter=selectdivs[l].getAttribute("l-filter");
                 var s_dds=selectdivs[l].getElementsByTagName('dd');
-                l_select_searchinput[0].oninput=(function(){
+                l_select_searchinput[0].oninput=(function(s_dds){
                     return function(e){
                         var v=this.value;
                         for(var i=0;i<s_dds.length;i++){
@@ -132,9 +132,11 @@ l.form={
                             }
                             var se_options=selectdivs[l].nextSibling.getElementsByTagName("option");
                             var select1=selectdivs[l].nextSibling;
+                            var op_obj;
                             for(var j=0,se_o_len=se_options.length;j<se_o_len;j++){
                                 var v=se_options[j].getAttribute("value");
                                 if(v==value){
+                                    op_obj=se_options[j];
                                     se_options[j].setAttribute("selected", true);
                                 }else{
                                     se_options[j].removeAttribute("selected");
@@ -144,7 +146,7 @@ l.form={
                                 select1.fireEvent("onchange")  
                             else  if(select1.onchange)
                                 select1.onchange()
-                            that.onSelectFn(filter,value,title);
+                            that.onSelectFn(filter,value,title,op_obj);
 
                             }
                     })(l,filter);
