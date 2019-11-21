@@ -427,7 +427,7 @@ a cite{font-style:normal;*cursor:pointer}
 .l-select-none{margin:5px 0;text-align:center;color:#999}
 .l-select-disabled .l-disabled{border-color:#eee!important}
 .l-select-disabled .l-edge{border-top-color:#d2d2d2}
-.l-form-checkbox{position:relative;display:inline-block;vertical-align:middle;height:30px;line-height:28px;margin-right:10px;padding-right:30px;border:1px solid #d2d2d2;background-color:#fff;cursor:pointer;font-size:0;border-radius:2px;-webkit-transition:.1s linear;transition:.1s linear;box-sizing:border-box}
+.l-form-checkbox{position:relative;display:inline-block;vertical-align:middle;height:30px;line-height:30px;margin-right:10px;padding-right:30px;border:1px solid #d2d2d2;background-color:#fff;cursor:pointer;font-size:0;border-radius:2px;-webkit-transition:.1s linear;transition:.1s linear}
 .l-form-checkbox:hover{border:1px solid #c2c2c2}
 .l-form-checkbox *{display:inline-block;vertical-align:middle}
 .l-form-checkbox span{padding:0 10px;height:100%;font-size:14px;background-color:#d2d2d2;color:#fff;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}

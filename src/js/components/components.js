@@ -44,10 +44,10 @@ l.page=function(){
                     var pageAs=elem.getElementsByClassName("pagea");
                     for(var i=0,len=pageAs.length;i<len;i++){
                         var pageA=pageAs[i];
-                        pageA.onclick=function(e){
+                        pageA.addEventListener("click",function(e){
                             var page = parseInt(this.getAttribute("page")) || 1;
                             that.onPage(e, page,that.max);
-                        }
+                        })
                     };
                 });
                 

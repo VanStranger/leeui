@@ -183,18 +183,18 @@ l.table=new (function(){
         //页码点击
         var pagebtns=document.querySelectorAll(obj.elem+ " .l-tablepage-btn");
         for(var i=0,len=pagebtns.length;i<len;i++){
-            pagebtns[i].onclick=function(e){
+            pagebtns[i].addEventListener("click",function(e){
                 if(!this.getAttribute("l-disabled")){
                     var page=this.getAttribute("data-page");
                     that.page=parseInt(page);
                 }
-            }
+            });
         }
         //页面跳转点击
-        document.getElementsByClassName("l-tablepagejump-btn")[0].onclick=function(e){
+        document.getElementsByClassName("l-tablepagejump-btn")[0].addEventListener("click",function(e){
             var page=this.previousSibling.previousSibling.value;
             that.page=parseInt(page);
-        }
+        });
 
         //页面limit变化事件
         document.querySelector(obj.elem+" .tablepage-limit-change").onchange=function(){

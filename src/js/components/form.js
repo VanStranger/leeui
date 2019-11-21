@@ -113,7 +113,7 @@ l.form={
                 })(s_dds);
                 //select 切换
                 for(var i=0,len=s_dds.length;i<len;i++){
-                    s_dds[i].onclick=(function(l,filter){
+                    s_dds[i].addEventListener("click",(function(l,filter){
                         return function(e){
                             var value=this.getAttribute("l-value");
                             var title=this.innerText;
@@ -149,21 +149,21 @@ l.form={
                             that.onSelectFn(filter,value,title,op_obj);
 
                             }
-                    })(l,filter);
+                    })(l,filter));
                 }
             }
 
             //select 下拉菜单
             var l_selectTitles = document.getElementsByClassName("l-select-title");
             for (var i = 0, len = l_selectTitles.length; i < len; i++) {
-                l_selectTitles[i].onclick = function(e) {
+                l_selectTitles[i].addEventListener("click",function(e) {
                     var p = this.parentNode;
                     if (p.className.indexOf("l-form-selected") == -1) {
                         p.className += " l-form-selected";
                     } else {
                         p.className = p.className.replace(" l-form-selected", "");
                     }
-                }
+                })
             }
         },
         rendeRadioCheckbox(){
@@ -198,7 +198,7 @@ l.form={
                             radiodiv.setAttribute("l-value", r_value);
                             radiodiv.setAttribute("l-name", r_name);
                             l_inputs[j].parentNode.insertBefore(radiodiv,l_inputs[j]);
-                            radiodiv.onclick=function(e){
+                            radiodiv.addEventListener("click",function(e){
                                 var radioname=this.getAttribute("l-name");
                                 var r_value=this.getAttribute("l-value");
                                 var l_radionames=document.getElementsByName(radioname);
@@ -222,7 +222,7 @@ l.form={
                                 this.getElementsByClassName("l-icon")[0].className+=" l-anim-scaleSpring";
                                 this.getElementsByClassName("l-icon")[0].className = this.getElementsByClassName("l-icon")[0].className.replace("icon-radio","icon-radiochecked" );
                                 // this.setAttribute("checked",true);
-                            }
+                            });
                             break;
                         case "checkbox":
                             l_inputs[j].onchange=function(){
@@ -244,7 +244,7 @@ l.form={
                                     previousobj.parentNode.removeChild(previousobj);
                                 }
                                 l_inputs[j].parentNode.insertBefore(checkboxdiv,l_inputs[j]);
-                                checkboxdiv.onclick=function(e){
+                                checkboxdiv.addEventListener("click",function(e){
                                     if(this.className.indexOf("l-form-checked")==-1){
                                         this.className+=" l-form-checked";
                                         this.nextSibling.setAttribute("checked", true);
@@ -252,7 +252,7 @@ l.form={
                                         this.className=this.className.replace('l-form-checked',"");
                                         this.nextSibling.removeAttribute("checked");
                                     }
-                                };
+                                }) ;
                             }else if(l_inputs[j].getAttribute("l-skin")=="switch"){
                                 var l_text=l_inputs[j].getAttribute("l-text");
                                 var l_text_arr=l_text.split("|");
@@ -271,7 +271,7 @@ l.form={
                                     previousobj.parentNode.removeChild(previousobj);
                                 }
                                  l_inputs[j].parentNode.insertBefore(checkboxdiv,l_inputs[j]);
-                                 checkboxdiv.onclick=function(e){
+                                 checkboxdiv.addEventListener("click",function(e){
                                     var l_text=this.getAttribute("l-text");
                                     var l_text_arr=l_text.split("|");
                                     if(this.className.indexOf("l-form-onswitch")==-1){
@@ -283,7 +283,7 @@ l.form={
                                         this.nextSibling.removeAttribute("checked");
                                         this.getElementsByTagName("em")[0].innerText=l_text_arr[1];
                                     }
-                                 }
+                                 })
                             }
                             break;
 
