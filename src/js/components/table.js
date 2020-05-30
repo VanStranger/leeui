@@ -77,76 +77,76 @@ leeui.prototype.table=new (function(){
         pageobj.className="l-table-page";
         var pagehtml=`
             <div class="l-box l-laypage l-laypage-default">
-                <a href="###" class="l-tablepage-btn l-laypage-prev ${page==1?'l-disabled':''}" data-page="${page-1}">
+                <a href="javascript:;" class="l-tablepage-btn l-laypage-prev ${page==1?'l-disabled':''}" data-page="${page-1}">
                     <i class="l-icon iconfont  icon-left"></i>
                 </a>
             `;
             if(pagesize==1){
                 pagehtml+=`
                     
-                    <a href="###" data-page="1" class="l-tablepage-btn  active">1</a>
+                    <a href="javascript:;" data-page="1" class="l-tablepage-btn  active">1</a>
                     
                 `;
             }else if(pagesize<7){
                 for(var i=1;i<=pagesize;i++){
 
                     pagehtml+=`             
-                        <a href="###" data-page="${i}" class="l-tablepage-btn  ${page==i?'active':''}">${i}</a> 
+                        <a href="javascript:;" data-page="${i}" class="l-tablepage-btn  ${page==i?'active':''}">${i}</a> 
                     `;
                 }
             }else{
                 if(page<4){
                     pagehtml+=`
                     
-                    <a href="###" data-page="1" class="l-tablepage-btn  ${page==1?'active':''}">1</a>
-                    <a href="###" data-page="2" class="l-tablepage-btn  ${page==2?'active':''}">2</a>
-                    <a href="###" data-page="3" class="l-tablepage-btn  ${page==3?'active':''}">3</a>
-                    <a href="###" data-page="4" class="l-tablepage-btn">4</a>
+                    <a href="javascript:;" data-page="1" class="l-tablepage-btn  ${page==1?'active':''}">1</a>
+                    <a href="javascript:;" data-page="2" class="l-tablepage-btn  ${page==2?'active':''}">2</a>
+                    <a href="javascript:;" data-page="3" class="l-tablepage-btn  ${page==3?'active':''}">3</a>
+                    <a href="javascript:;" data-page="4" class="l-tablepage-btn">4</a>
                     <span class="l-laypage-spr">…</span>
-                    <a href="###" data-page="${pagesize}" class="l-tablepage-btn ">${pagesize}</a>
+                    <a href="javascript:;" data-page="${pagesize}" class="l-tablepage-btn ">${pagesize}</a>
                     
                     `;
                 }else if(page>pagesize-2){
                     pagehtml+=`
                     
-                    <a href="###" data-page="1" class="l-tablepage-btn  ">1</a>
+                    <a href="javascript:;" data-page="1" class="l-tablepage-btn  ">1</a>
                     <span class="l-laypage-spr">…</span>
-                    <a href="###" data-page="${pagesize-3}" class="l-tablepage-btn ${page==pagesize-3?'active':''}">${pagesize-3}</a>
-                    <a href="###" data-page="${pagesize-2}" class="l-tablepage-btn ${page==pagesize-2?'active':''}">${pagesize-2}</a>
-                    <a href="###" data-page="${pagesize-1}" class="l-tablepage-btn ${page==pagesize-1?'active':''}">${pagesize-1}</a>
-                    <a href="###" data-page="${pagesize}" class="l-tablepage-btn ${page==pagesize?'active':''}">${pagesize}</a>
+                    <a href="javascript:;" data-page="${pagesize-3}" class="l-tablepage-btn ${page==pagesize-3?'active':''}">${pagesize-3}</a>
+                    <a href="javascript:;" data-page="${pagesize-2}" class="l-tablepage-btn ${page==pagesize-2?'active':''}">${pagesize-2}</a>
+                    <a href="javascript:;" data-page="${pagesize-1}" class="l-tablepage-btn ${page==pagesize-1?'active':''}">${pagesize-1}</a>
+                    <a href="javascript:;" data-page="${pagesize}" class="l-tablepage-btn ${page==pagesize?'active':''}">${pagesize}</a>
                     
                     `;
                 }else{
                     pagehtml+=`
                     
-                    <a href="###" data-page="1" class="l-tablepage-btn  ">1</a>
+                    <a href="javascript:;" data-page="1" class="l-tablepage-btn  ">1</a>
                     <span class="l-laypage-spr">…</span>
-                    <a href="###" data-page="${page-1}" class="l-tablepage-btn ${page==page-1?'active':''}">${page-1}</a>
-                    <a href="###" data-page="${page}" class="l-tablepage-btn ${page==page?'active':''}">${page}</a>
-                    <a href="###" data-page="${page+1}" class="l-tablepage-btn ${page==page+1?'active':''}">${page+1}</a>
+                    <a href="javascript:;" data-page="${page-1}" class="l-tablepage-btn ${page==page-1?'active':''}">${page-1}</a>
+                    <a href="javascript:;" data-page="${page}" class="l-tablepage-btn ${page==page?'active':''}">${page}</a>
+                    <a href="javascript:;" data-page="${page+1}" class="l-tablepage-btn ${page==page+1?'active':''}">${page+1}</a>
                     <span class="l-laypage-spr">…</span>
-                    <a href="###" data-page="${pagesize}" class="l-tablepage-btn ">${pagesize}</a>
+                    <a href="javascript:;" data-page="${pagesize}" class="l-tablepage-btn ">${pagesize}</a>
                     
                 `;
                 }
             }
         
-                // <a href="###" class="l-tablepage-btn l-laypage-prev l-disabled" data-page="${page-1}">
+                // <a href="javascript:;" class="l-tablepage-btn l-laypage-prev l-disabled" data-page="${page-1}">
                 //     <i class="l-icon iconfont  icon-left"></i>
                 // </a>
-                // <a href="###" data-page="1" class="l-tablepage-btn">1</a>
+                // <a href="javascript:;" data-page="1" class="l-tablepage-btn">1</a>
 
-                // <a href="###" data-page="${page}" class="l-tablepage-btn active">${page}</a>
-                // <a href="###" data-page="3" class="l-tablepage-btn">3</a>
+                // <a href="javascript:;" data-page="${page}" class="l-tablepage-btn active">${page}</a>
+                // <a href="javascript:;" data-page="3" class="l-tablepage-btn">3</a>
                 // <span class="l-laypage-spr">…</span>
-                // <a href="###" class="l-tablepage-btn l-laypage-last" title="尾页" data-page="${pagesize}">${pagesize}</a>
-                // <a href="###" class="l-tablepage-btn l-laypage-next" data-page="${page+1}">
+                // <a href="javascript:;" class="l-tablepage-btn l-laypage-last" title="尾页" data-page="${pagesize}">${pagesize}</a>
+                // <a href="javascript:;" class="l-tablepage-btn l-laypage-next" data-page="${page+1}">
                 //     <i class="l-icon iconfont  icon-right"></i>
                 // </a>
 
                 pagehtml+=`
-                <a href="###" class="l-tablepage-btn l-laypage-next  ${page==pagesize?'l-disabled':''}" data-page="${page+1}">
+                <a href="javascript:;" class="l-tablepage-btn l-laypage-next  ${page==pagesize?'l-disabled':''}" data-page="${page+1}">
                     <i class="l-icon iconfont  icon-right"></i>
                 </a>
                 <span class="l-laypage-skip">到第

@@ -15,10 +15,10 @@ leeui.prototype.photos.prototype={
             divobj.style.height = clientHeight + "px";
             divobj.setAttribute("id", "LYshowimgs_div");
             htmlstr = `<div class="l_closebtn">
-                            <a href="###" class="l_closebtna iconfont icon-close"></a>
+                            <a href="javascript:;" class="l_closebtna iconfont icon-close"></a>
                         </div>
-                        <a href="###" class="l_prev iconfont icon-left"></a>
-                        <a href="###" class="l_next iconfont icon-right"></a>
+                        <a href="javascript:;" class="l_prev iconfont icon-left"></a>
+                        <a href="javascript:;" class="l_next iconfont icon-right"></a>
                         <div class="l_mu"></div>
                         <div class="l_imgctrbtns">
                             <span class="iconfont icon-undo"></span>
