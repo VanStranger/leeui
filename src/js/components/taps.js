@@ -1,4 +1,4 @@
-l.tabs={
+leeui.prototype.tabs={
     onchange:function(i){
 
     },
@@ -38,4 +38,4 @@ l.tabs={
         }
     }
 }
-l.tabs.init();
+// 

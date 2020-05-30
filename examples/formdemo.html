@@ -63,6 +63,14 @@
 	    </div>
 	  </div>
 	  <div class="l-form-item">
+	    <label class="l-form-label">复选框</label>
+	    <div class="l-input-block">
+	      <input type="checkbox" name="like1[]" title="写作" value="write">
+	      <input type="checkbox" name="like1[]" title="阅读" checked value="read">
+	      <input type="checkbox" name="like1[]" title="发呆" value="dai">
+	    </div>
+	  </div>
+	  <div class="l-form-item">
 	    <label class="l-form-label">开关</label>
 	    <div class="l-input-block">
 	      <input type="checkbox" name="switch" l-skin="switch" l-text="开启|关闭">
@@ -73,6 +81,13 @@
 	    <div class="l-input-block">
 	      <input type="radio" name="sex" value="男" title="男">
 	      <input type="radio" name="sex" value="女" title="女" checked>
+	    </div>
+	  </div>
+	  <div class="l-form-item">
+	    <label class="l-form-label">单选框</label>
+	    <div class="l-input-block">
+	      <input type="radio" name="sex1" value="男" title="男">
+	      <input type="radio" name="sex1" value="女" title="女" checked>
 	    </div>
 	  </div>
 	  <div class="l-form-item l-form-text">
@@ -98,31 +113,57 @@
 	// var lpage=new l.page();
 	// lpage.elem=".pagediv";
 	// lpage.render();
-	l.form.initform();
-	l.form.onSelect("city",function(v,t,o){
+	var l=new leeui();
+	var leeform=new l.form();
+	leeform.initform();
+	leeform.onRadio("sex",function(v,o){
+		console.log(v,o);
+	});
+	leeform.onRadio("sex1",function(v,o){
+		console.log("a",v,o);
+	});
+	leeform.onSelect("city",function(v,t,o){
 		console.log("select");
 		console.log(v);
 		console.log(t);
 		console.log(o);
 	})
-	l.form.onSelect("city1",function(v,t,o){
+	leeform.onSelect("city1",function(v,t,o){
 		console.log("select1");
 		console.log(v);
 		console.log(t);
 		console.log(o);
 	})
-	l.form.onSelect("",function(v,t,o){
+	leeform.onSelect("",function(v,t,o){
 		console.log("select2");
 		console.log(v);
 		console.log(t);
 		console.log(o);
 	})
+	leeform.onCheckbox("like[]",function(v,t,o){
+		console.log("checkbox");
+		console.log(v);
+		console.log(t);
+		console.log(o);
+	})
+	leeform.onCheckbox("switch",function(v,t,o){
+		console.log("checkbox");
+		console.log(v);
+		console.log(t);
+		console.log(o);
+	})
+	// leeform.onSubmit("li",function(json,array){
+	// 	console.log(json);
+	// 	console.log(array);
+	// 	return false;
+	// })
 	document.getElementsByTagName("form")[0].onsubmit=function(e){
 		e.preventDefault();
 		console.log(l);
-		console.log(l.form);
-		console.log(l.form.getFormJson(0));
-		console.log(l.form.getFormJson());
-		console.log(l.form.getFormJson("li"));
+		console.log(leeform);
+		console.log(leeform.getFormJson(0));
+		console.log(leeform.getFormJson());
+		console.log(leeform.getFormJson("li"));
+		return false;
 	}
 </script>

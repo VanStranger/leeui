@@ -1,5 +1,5 @@
 
-l.page=function(){
+leeui.prototype.page=function(){
     var elem="";
     var now=1;
     var max=1;

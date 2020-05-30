@@ -100,7 +100,8 @@
 
 </html>
 <script>
-    l.table.render( {
+    var ll=new leeui();
+    ll.table.render( {
             elem: "#table",
             url: "",//远程获取渲染数据
             cols: function(row){
@@ -122,16 +123,16 @@
                 
             },
         });
-    l.table.data=[
+    ll.table.data=[
         {"name":"sdfsdf"},
         {"name":"sdfsdf"},
         {"name":"sdfsdf"},
         {"name":"sdfsdf"},
     ];
-    l.table.amount=50;
+    ll.table.amount=50;
 
 
-    var lpage=new l.page();
+    var lpage=new ll.page();
 	lpage.render({
 		elem:".pagediv",
 		now:5,

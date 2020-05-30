@@ -1,4 +1,4 @@
-l.table=new (function(){
+leeui.prototype.table=new (function(){
     var data=[];
     var limit=20;
     var page=1;

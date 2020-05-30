@@ -1,4 +1,5 @@
-l.photos={
+leeui.prototype.photos=function(){};
+leeui.prototype.photos.prototype={
     index:0,
     imgboxwidth:0,
     imgboxheight:0,
