@@ -404,13 +404,37 @@
         <span class="l-icon l-addimg-icon icon-pic"></span>添加图片
     </div>
 
-
+    <input type="file" name="upphoto" id="upPhoto" style="display: none;"  accept="image/*"/>
 
 
         
 </div>
 </body>
 </html>
+<script type="text/javascript">
+	document.getElementsByClassName("l-addimg-div")[0].onclick=function(){
+
+		document.getElementById("upPhoto").click();
+	}
+	document.getElementById("upPhoto").onchange=function(e){
+		const file = e.target.files[0];
+	    e.target.value = '' // 上传之后还原
+	    if (!/image\/\w+/.test(file.type)) {
+	      alert("只能选择图片");
+	      return false;
+	    }
+	    var reader = new FileReader();
+	    reader.readAsDataURL(file);
+	    reader.onload = (e)=> {
+	      var base64Code=reader.result;
+	      //把得到的base64赋值到img标签显示
+	      // this.cropPhoto(base64Code);
+	      document.getElementsByClassName("l-addimg-div")[0].innerHTML="";
+	      document.getElementsByClassName("l-addimg-div")[0].style.backgroundImage="url("+reader.result+")";
+	      document.getElementsByClassName("l-addimg-div")[0].style.backgroundSize="cover";
+	    }
+	}
+</script>
 <style>
 .site-h1 {
     margin-bottom: 20px;
