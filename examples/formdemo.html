@@ -44,12 +44,12 @@
 	  <div class="l-form-item">
 	    <label class="l-form-label">选择框</label>
 	    <div class="l-input-block">
-	      <select name="city" l-verify="required" l-filter="city1" l-search=true>
+	      <select name="city1" l-verify="required" l-filter="city1" l-search=true multiple="multiple">
 	        <option value=""></option>
 	        <option value="0">北京</option>
 	        <option value="1" selected>上海</option>
 	        <option value="2">广州</option>
-	        <option value="3">深圳</option>
+	        <option value="3" selected>深圳</option>
 	        <option value="4">杭州</option>
 	      </select>
 	    </div>
@@ -107,12 +107,9 @@
 	
 </body>
 </html>
-<script src="../dist/leeui.js"></script>
-<!-- <script src="../src/js/components/form.js"></script> -->
+<!-- <script src="../dist/leeui.js"></script> -->
+<script src="../src/js/components/form.js"></script>
 <script>
-	// var lpage=new l.page();
-	// lpage.elem=".pagediv";
-	// lpage.render();
 	var l=new leeui();
 	var leeform=new l.form();
 	leeform.initform();
@@ -122,18 +119,18 @@
 	leeform.onRadio("sex1",function(v,o){
 		console.log("a",v,o);
 	});
-	leeform.onSelect("city",function(v,t,o){
-		console.log("select");
-		console.log(v);
-		console.log(t);
-		console.log(o);
-	})
-	leeform.onSelect("city1",function(v,t,o){
-		console.log("select1");
-		console.log(v);
-		console.log(t);
-		console.log(o);
-	})
+	// leeform.onSelect("city",function(v,t,o){
+	// 	console.log("select");
+	// 	console.log(v);
+	// 	console.log(t);
+	// 	console.log(o);
+	// })
+	// leeform.onSelect("city1",function(v,t,o){
+	// 	console.log("select1");
+	// 	console.log(v);
+	// 	console.log(t);
+	// 	console.log(o);
+	// })
 	leeform.onSelect("",function(v,t,o){
 		console.log("select2");
 		console.log(v);

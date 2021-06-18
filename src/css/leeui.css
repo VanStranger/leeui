@@ -1475,6 +1475,9 @@ hr,
 .l-form-select dl dd {
   cursor: pointer;
 }
+.l-form-select dl dd  .iconfont{
+  margin-right:10px;
+}
 
 .l-form-select dl dd:hover {
   background-color: #f2f2f2;

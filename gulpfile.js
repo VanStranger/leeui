@@ -74,8 +74,10 @@ var argv = require('minimist')(process.argv.slice(2), {
     ver = ver === 'open';
 
     var src = [
-      ,'./src/css/components/*.css'
+      './src/css/colors.scss'
+      ,'./src/css/custom.scss'
       ,'./src/css/leeui.scss'
+      ,'./src/css/components/*.css'
     ]
     ,dir = ver ? release : 'dist'
     ,noteNew = JSON.parse(JSON.stringify(note));
@@ -84,8 +86,8 @@ var argv = require('minimist')(process.argv.slice(2), {
     noteNew[1].js = '';
 
     return gulp.src(src)
-    .pipe(sass())
     .pipe(concat("leeui.css"))
+    .pipe(sass())
     .pipe(minify({
         advanced: false,//类型：Boolean 默认：true [是否开启高级优化（合并选择器等）]
         compatibility: 'ie7',//保留ie7及以下兼容写法 类型：String 默认：''or'*' [启用兼容模式； 'ie7'：IE7兼容模式，'ie8'：IE8兼容模式，'*'：IE9+兼容模式]
@@ -125,18 +127,19 @@ gulp.task('font', task.font);
 
 
 //发行版
-gulp.task('default', ['clearRelease'], function(){ //命令：gulp
+gulp.task('default', gulp.series('clearRelease', function(callback){ //命令：gulp
   for(var key in task){
     task[key]('open');
   }
-});
+  callback();
+}));
 
 //完整任务
-gulp.task('all', ['clear'], function(){ //命令：gulp all，过滤layim：gulp all --open
+gulp.task('all', gulp.series('clear', function(){ //命令：gulp all，过滤layim：gulp all --open
   for(var key in task){
     task[key]();
   }
-});
+}));
 
 //打包layer独立版
 gulp.task('layer', function(){
