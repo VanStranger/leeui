@@ -172,6 +172,9 @@ leeui.prototype.form.prototype = {
                     return function (e) {
                         var value = this.getAttribute("l-value");
                         var title = this.innerText;
+                        if(!value){
+                            return false;
+                        }
                         if(!l_select_multi){
                             selectdivs[l].getElementsByTagName("input")[0].value = title;
                             selectdivs[l].className = selectdivs[l].className.replace(" l-form-selected", "");
