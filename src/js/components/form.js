@@ -372,7 +372,34 @@ leeui.prototype.form.prototype = {
                                 }
                                 that.onCheckboxFn(nexto.getAttribute("name"), { "objvalue": nexto.value, "value": objv, "title": nexto.getAttribute("title"), "obj": nexto });
                             });
-                        } else if (l_inputs[j].getAttribute("l-skin") == "switch") {
+                        } else if (l_inputs[j].getAttribute("l-skin") == "primary") {
+                            // <div class="layui-unselect layui-form-checkbox layui-form-checked" lay-skin="primary"><span>写作</span><i class="layui-icon layui-icon-ok"></i></div>
+                            checkboxdiv.setAttribute("l-skin","primary");
+                            if (l_inputs[j].checked) {
+                                checkboxdiv.className = 'l-unselect l-form-checkbox l-form-checked';
+                                checkboxdiv.innerHTML = '<span>' + c_title + '</span><i class="l-icon icon-fangxingxuanzhong"></i>';
+                            } else {
+                                checkboxdiv.className = 'l-unselect l-form-checkbox';
+                                checkboxdiv.innerHTML = '<span>' + c_title + '</span><i class="l-icon  icon-fangxingxuanzhong"></i>';
+                            }
+                            var previousobj = l_inputs[j].previousElementSibling;
+                            if (previousobj && previousobj.className.match("l-form-checkbox")) {
+                                previousobj.parentNode.removeChild(previousobj);
+                            }
+                            l_inputs[j].parentNode.insertBefore(checkboxdiv, l_inputs[j]);
+                            checkboxdiv.addEventListener("click", function (e) {
+                                var nexto = this.nextSibling;
+                                var objv = this.className.indexOf("l-form-checked") === -1;
+                                if (objv) {
+                                    this.className += " l-form-checked";
+                                    this.nextSibling.setAttribute("checked", true);
+                                } else {
+                                    this.className = this.className.replace('l-form-checked', "");
+                                    this.nextSibling.removeAttribute("checked");
+                                }
+                                that.onCheckboxFn(nexto.getAttribute("name"), { "objvalue": nexto.value, "value": objv, "title": nexto.getAttribute("title"), "obj": nexto });
+                            });
+                        }else if (l_inputs[j].getAttribute("l-skin") == "switch") {
                             var l_text = l_inputs[j].getAttribute("l-text");
                             var l_text_arr = l_text.split("|");
                             var switchhtml = '<div class="l-form-switch l-form-onswitch" lay-skin="_switch"><em>ON</em><i></i></div>';
@@ -416,10 +443,10 @@ leeui.prototype.form.prototype = {
     },
     initform: function () {
         var that = this;
-        document.getElementsByClassName("l-form")[0].className += " actived";
         var l_form_objs = document.getElementsByClassName("l-form"), filter;
         for (var i = 0, len = l_form_objs.length; i < len; i++) {
             filter = l_form_objs[i].getAttribute('l-filter');
+            l_form_objs[i].className += " actived";
             this.l_forms.push({ 0: l_form_objs[i], "filter": filter });
             l_form_objs[i].onsubmit = (function (i, filter) {
                 return function (e) {
@@ -523,7 +550,7 @@ leeui.prototype.form.prototype = {
                     return null;
                 }
             } else {
-                for (var i = 0, len = args.length; i < len; i++) {
+                for (var i = 0, len = this.l_forms.length; i < len; i++) {
                     if (this.l_forms[i]['filter'] == args[0]) {
                         l_form = this.l_forms[i];
                         break;

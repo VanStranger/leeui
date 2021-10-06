@@ -18,7 +18,20 @@
 	  <div class="l-form-item">
 	    <label class="l-form-label">输入框</label>
 	    <div class="l-input-block">
-	      <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="l-input" value="sdfsd">
+	      <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="l-input" value="">
+	    </div>
+	  </div>
+	  <div class="l-form-item">
+	    <label class="l-form-label">验证码</label>
+	    <div class="l-input-block">
+				<div class="l-row" style="overflow:hidden;">
+					<div class="l-col-md9">
+						<input type="text" name="title" required  lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="l-input" value="">
+					</div>
+					<div class="l-col-md3">
+						<p class="l-btn l-btn-primary l-btn-fluid">获取验证码</p>
+					</div>
+				</div>
 	    </div>
 	  </div>
 	  <div class="l-form-item">
@@ -65,9 +78,9 @@
 	  <div class="l-form-item">
 	    <label class="l-form-label">复选框</label>
 	    <div class="l-input-block">
-	      <input type="checkbox" name="like1[]" title="写作" value="write">
-	      <input type="checkbox" name="like1[]" title="阅读" checked value="read">
-	      <input type="checkbox" name="like1[]" title="发呆" value="dai">
+	      <input type="checkbox" name="love[]" title="财富" l-skin="primary" checked>
+				<input type="checkbox" name="love[]" title="权势" l-skin="primary"> 
+				<input type="checkbox" name="love[]" title="爱情" l-skin="primary" disabled> 
 	    </div>
 	  </div>
 	  <div class="l-form-item">
@@ -107,8 +120,8 @@
 	
 </body>
 </html>
-<!-- <script src="../dist/leeui.js"></script> -->
-<script src="../src/js/components/form.js"></script>
+<script src="../dist/leeui.js"></script>
+<!-- <script src="../src/js/components/form.js"></script> -->
 <script>
 	var l=new leeui();
 	var leeform=new l.form();

@@ -12,7 +12,7 @@
     <fieldset class="" style="margin-top:30px;">
         <legend><a name="quickstart">项目介绍</a></legend>
         <div class="site-text">
-            <p>本项目脱胎于<a target="_blank" href="https://www.layui.com/">layui</a>，一个很美丽的UI框架。本项目仅权做添足。</p>  
+            <p>本项目脱胎于<a target="_blank" href="https://www.l.com/">l</a>，一个很美丽的UI框架。本项目仅权做添足。</p>  
         </div>
     </fieldset>
     <fieldset class="" style="margin-top:30px;">
@@ -21,9 +21,46 @@
             <p>获得 leeui后，你只需要引入下述两个文件：</p>
             <pre class="l-code l-box l-code-view"><h3 class="l-code-h3">code<a href="http://www.l.com/doc/modules/code.html" target="_blank">l.code</a></h3><ol class="l-code-ol"><li>./dist/leeui.css</li><li>./dist/leeui.js</li><li>      </li></ol></pre>
         </div>
+        <div class="l-container">  
+            常规布局（以中型屏幕桌面为例）：
+            <div class="l-row l-col-space10">
+              <div class="l-col-md9">
+                你的内容 9/12
+              </div>
+              <div class="l-col-md3">
+                你的内容 3/12
+              </div>
+            </div>
+             
+            移动设备、平板、桌面端的不同表现：
+            <div class="l-row">
+              <div class="l-col-xs6 l-col-sm6 l-col-md4">
+                移动：6/12 | 平板：6/12 | 桌面：4/12
+              </div>
+              <div class="l-col-xs6 l-col-sm6 l-col-md4">
+                移动：6/12 | 平板：6/12 | 桌面：4/12
+              </div>
+              <div class="l-col-xs4 l-col-sm12 l-col-md4">
+                移动：4/12 | 平板：12/12 | 桌面：4/12
+              </div>
+              <div class="l-col-xs4 l-col-sm7 l-col-md8">
+                移动：4/12 | 平板：7/12 | 桌面：8/12
+              </div>
+              <div class="l-col-xs4 l-col-sm5 l-col-md4">
+                移动：4/12 | 平板：5/12 | 桌面：4/12
+              </div>
+            </div>
+          </div>
     </fieldset>
 </body>
 
 </html>
 <script>
 </script>
+<style>
+    .l-row div{
+        background:green;
+        padding:20px;
+        border:1px solid #000;
+    }
+</style>
