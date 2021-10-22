@@ -4,6 +4,7 @@ leeui.prototype.page=function(){
     var now=1;
     var max=1;
     var pageHtml="";
+    var size="normal";
     Object.defineProperty(this, "now", {
         get: function () { return now; },
         set: function (value) { now = parseInt(value) || 1; this.render(); }
@@ -17,13 +18,16 @@ leeui.prototype.page=function(){
     };
     this.render=function(config={}){
         if(config.elem){
-            this.elem=config.elem;
+            elem=config.elem;
         }
         if(config.now){
-            this.now=parseInt(config.now);
+            now=parseInt(config.now);
         }
         if(config.max){
-            this.max=parseInt(config.max);
+            max=parseInt(config.max);
+        }
+        if(config.size){
+            size=config.size;
         }
         if(config.onPage && typeof config.onPage==="function"){
             console.log(config.onPage);
@@ -33,14 +37,15 @@ leeui.prototype.page=function(){
         console.log(config.onpage);
         console.log(config.onPage);
 
-        if(this.elem){
-            var elems=document.querySelectorAll(this.elem);
+        if(elem){
+            var elems=document.querySelectorAll(elem);
             if(elems.length){
-                this.pageHtml=getPage(now,max);
+                console.log(this);
+                pageHtml=getPage(now,max);
                 console.log()
                 var that=this;
                 elems.forEach(elem => {
-                    elem.innerHTML=this.pageHtml;
+                    elem.innerHTML=pageHtml;
                     var pageAs=elem.getElementsByClassName("pagea");
                     for(var i=0,len=pageAs.length;i<len;i++){
                         var pageA=pageAs[i];
@@ -54,7 +59,7 @@ leeui.prototype.page=function(){
             }
         }
     };
-    var getPage= function getpage(now , max) {
+    var getPage= function(now , max) {
         var pre="",next="",body="";
         switch (now) {
             case 1:
@@ -122,7 +127,7 @@ leeui.prototype.page=function(){
                 body+= "<li class='pageli'>···</li><li class='pageli'><a class='pagea' page='"+(max)+"' href='###'>"+max+"</a></li>";
                 break;
         }
-        return pre+body+next;
+        return "<div class=\"pagediv " + (size==='normal'?'':size) + "\">" +pre+body+next+"</div>";
 
     };
 };

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="cn_zh">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LeeUI</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <link rel="stylesheet" href="../dist/leeui.css">
     <script src="../dist/leeui.js"></script>
 </head>
@@ -19,7 +20,7 @@
             <a class="logo" href="/">
               <img class='l-header-logo' src="./images/logo.gif" alt="l">
             </a>
-            <ul class="l-nav l-left">
+            <ul class="l-nav l-left l-hide-xs">
                 <li class="l-nav-item l-this">
                     <a href="javascript:;">文档</a>
                 </li>
@@ -27,7 +28,7 @@
                     <a href="javascript:;">示例</a>
                 </li>
                 <li class="l-nav-item l-hide-xs">
-                    <a href="javascript:;" target="_blank">社区<span class="l-badge">9</span></a>
+                    <a href="javascript:;">社区<span class="l-badge">9</span></a>
                 </li>
                 <li class="l-nav-item">
                     <a href="javascript:;">周边<span class="l-nav-more"></span></a>
@@ -66,11 +67,13 @@
                     </dl>
                 </li>
             </ul>
+            <a href="javascript:;" class="iconfont icondetail-fill l-show-xs-block l-hide-md l-right l-nav-menuBtn"></a>
+
         </div>
     </div>
     <div class="l-row">
-        <div class="left-navs">
-            <ul class="l-nav l-nav-tree" lay-filter="test">
+        <div class="left-navs l-hide-xs l-col-md8">
+            <ul class="l-nav l-nav-tree l-bg-gray" lay-filter="test">
                 <!-- 侧边导航: <ul class="l-nav l-nav-tree l-nav-side"> -->
                 <li class="l-nav-item"><a href="javascript:;" l-href="start.html" class="iframelink">起步</a></li>
                 <li class="l-nav-item l-nav-itemed">
@@ -88,7 +91,7 @@
                 <li class="l-nav-item"><a href="javascript:;" l-href="demo_table.html" class="iframelink">数据表格</a></li> -->
             </ul>
         </div>
-        <div class="content">
+        <div class="content l-col-md52 l-col-xs60">
             <iframe id="contentIframe" src="start.html" frameborder="0" width="100%" height="100%"></iframe>
         </div>
     </div>
@@ -96,7 +99,7 @@
 
 </html>
 <style>
-.left-navs {
+.left-navs {  
     width: 200px;
     position: fixed;
     top: 60px;

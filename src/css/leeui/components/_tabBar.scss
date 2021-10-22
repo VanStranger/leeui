@@ -1,0 +1,40 @@
+.l-tabBar{
+  width:100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow: hidden;
+  min-height: 50px;
+  position:fixed;
+  bottom:0;
+  left:0;
+  background-color: #fff;
+}
+.l-tabBarItem{
+  flex: 1 1;
+  color: var(--adm-color-weak);
+  white-space: nowrap;
+  padding: 4px 8px;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color:#999;
+}
+.l-tabBarItemActive{
+  color:#1677ff;
+}
+.l-tabBarItem-icon{
+  font-size: 20px;
+  line-height: 22px;
+}
+.l-tabBarItem-title{
+  font-size: 12px;
+  line-height: 20px;
+}

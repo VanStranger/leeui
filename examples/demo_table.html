@@ -56,7 +56,7 @@
             <div class="l-table-page">
                     <div class="l-box l-laypage l-laypage-default">
                         <a href="javascript:;" class="l-laypage-prev l-disabled" data-page="0">
-                            <i class="l-icon iconfont  icon-left"></i>
+                            <i class="l-icon iconfont  iconleft"></i>
                         </a>
                         <a href="javascript:;" data-page="1" class="active">1</a>
                         <a href="javascript:;" data-page="2">2</a>
@@ -64,7 +64,7 @@
                         <span class="l-laypage-spr">…</span>
                         <a href="javascript:;" class="l-laypage-last" title="尾页" data-page="100">100</a>
                         <a href="javascript:;" class="l-laypage-next" data-page="2">
-                            <i class="l-icon iconfont  icon-right"></i>
+                            <i class="l-icon iconfont  iconright"></i>
                         </a>
                         <span class="l-laypage-skip">到第
                             <input type="text" min="1" value="1" class="l-input">页
@@ -95,7 +95,9 @@
 
     </div>
 
-    <div class="pagediv"></div>
+    <div id="pagediv"></div>
+    <div id="pagediv1"></div>
+    <div id="pagediv2"></div>
 </body>
 
 </html>
@@ -114,7 +116,7 @@
             },
             datachange:function(page,limit){
                 console.log(page,limit);
-                l.table.data=[
+                ll.table.data=[
                     {"name":"sdfsdf"},
                     {"name":"sdfsdf"},
                     {"name":"sdfsdf"},
@@ -134,14 +136,35 @@
 
     var lpage=new ll.page();
 	lpage.render({
-		elem:".pagediv",
+        elem:"#pagediv",
 		now:5,
 		max:51,
+        size:"normal",
 		onPage:function(e,page,max){
-			lpage.now=page;
-			lpage.render();
-            
-			
+            lpage.now=page;
+			lpage.render();	
+		}
+	});
+    var lpage1=new ll.page();
+	lpage1.render({
+        elem:"#pagediv1",
+		now:5,
+		max:51,
+        size:"sm",
+		onPage:function(e,page,max){
+            lpage1.now=page;
+			lpage1.render();	
+		}
+	});
+    var lpage2=new ll.page();
+	lpage2.render({
+		elem:"#pagediv2",
+		now:5,
+		max:51,
+        size:"lg",
+		onPage:function(e,page,max){
+			lpage2.now=page;
+			lpage2.render();	
 		}
 	});
 </script>

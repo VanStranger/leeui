@@ -1,0 +1,39 @@
+/* page分页 */
+.pagediv{
+  font-size: 0;
+  text-align: center;
+  vertical-align: middle;
+  .pageli{
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid #e1e2e3;
+    cursor: pointer;
+    text-decoration: none;
+    overflow: hidden;
+    margin-right: 9px;
+    background: #fff;
+    padding:0px;
+  }
+  .pagea{
+    display:block;
+    height: 30px;
+    line-height: 30px;
+    padding:0px 10px;
+  }
+  &.lg .pagea{
+    height:35px;
+    line-height: 35px;
+    padding:0 15px;
+  }
+  &.sm .pagea{
+    height:20px;
+    line-height: 20px;
+    padding:0 5px;
+  }
+  .pageli.active .pagea{
+    color:#fff;
+    background: #888;
+  }
+}

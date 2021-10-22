@@ -1,0 +1,68 @@
+.l-navBar{
+  display: flex;
+  align-items: center;
+  height: 45px;
+  border-bottom: none;
+  padding: 0 12px;
+  white-space: nowrap;
+  background-color: #fff;
+  width:100%;
+  position:fixed;
+  left:0;
+  top:0;
+  box-sizing: border-box;
+  z-index: 1;
+  -webkit-transform: translateZ(0);
+}
+.l-navBar.l-back{
+  position: inherit;
+}
+.l-navBar-leftnav{
+  display: flex;
+  flex:1;
+  align-items: center;
+  margin-right: 12px;
+  padding: 6px 0;
+  cursor: pointer;
+  font-size: 15px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.l-navBar-rightnav{
+  display: flex;
+  flex:1;
+  align-items: center;
+  margin-left: 12px;
+  padding: 6px 0;
+  cursor: pointer;
+  font-size: 15px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.l-navBar-leftnav .l-btn.l-btn-link,.l-navBar-rightnav .l-btn.l-btn-link{
+  color:#000;
+  text-decoration: none;
+}
+.l-navBar-leftnav .l-btn.l-btn-link:hover,.l-navBar-rightnav .l-btn.l-btn-link:hover{
+  text-decoration: none;
+}
+.l-navBar-leftnav .l-icon,.l-navBar-rightnav .l-icon{
+  font-size: 18px;
+  margin-right:6px;
+}
+.l-navBar-leftnav .l-text,.l-navBar-rightnav .l-text{
+  font-size: 16px;
+  line-height: 38px;
+}
+.l-navBar-title{
+  justify-content: center;
+  white-space: nowrap;
+  font-size: 18px;
+  padding: 0 12px;
+  flex: auto;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

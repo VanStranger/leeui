@@ -78,7 +78,7 @@ leeui.prototype.table=new (function(){
         var pagehtml=`
             <div class="l-box l-laypage l-laypage-default">
                 <a href="javascript:;" class="l-tablepage-btn l-laypage-prev ${page==1?'l-disabled':''}" data-page="${page-1}">
-                    <i class="l-icon iconfont  icon-left"></i>
+                    <i class="l-icon iconfont  iconleft"></i>
                 </a>
             `;
             if(pagesize==1){
@@ -147,7 +147,7 @@ leeui.prototype.table=new (function(){
 
                 pagehtml+=`
                 <a href="javascript:;" class="l-tablepage-btn l-laypage-next  ${page==pagesize?'l-disabled':''}" data-page="${page+1}">
-                    <i class="l-icon iconfont  icon-right"></i>
+                    <i class="l-icon iconfont  iconright"></i>
                 </a>
                 <span class="l-laypage-skip">到第
                     <input type="text" min="1" value="1" class="l-input">页

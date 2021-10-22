@@ -1,0 +1,74 @@
+/** 树组件（重写中） **/
+
+.l-tree {
+  line-height: 26px;
+}
+
+.l-tree li {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.l-tree li a,
+.l-tree li .l-tree-spread {
+  display: inline-block;
+  vertical-align: top;
+  height: 26px;
+  *display: inline;
+  *zoom: 1;
+  cursor: pointer;
+}
+
+.l-tree li a {
+  font-size: 0;
+}
+
+.l-tree li a i {
+  font-size: 16px;
+}
+
+.l-tree li a cite {
+  padding: 0 6px;
+  font-size: 14px;
+  font-style: normal;
+}
+
+.l-tree li i {
+  padding-left: 6px;
+  color: #333;
+  -moz-user-select: none;
+}
+
+.l-tree li .l-tree-check {
+  font-size: 13px;
+}
+
+.l-tree li .l-tree-check:hover {
+  color: #009E94;
+}
+
+.l-tree li ul {
+  display: none;
+  margin-left: 20px;
+}
+
+.l-tree li .l-tree-enter {
+  line-height: 24px;
+  border: 1px dotted #000;
+}
+
+.l-tree-drag {
+  display: none;
+  position: absolute;
+  left: -666px;
+  top: -666px;
+  background-color: #f2f2f2;
+  padding: 5px 10px;
+  border: 1px dotted #000;
+  white-space: nowrap
+}
+
+.l-tree-drag i {
+  padding-right: 5px;
+}

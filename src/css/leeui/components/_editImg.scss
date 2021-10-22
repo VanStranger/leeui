@@ -1,34 +1,3 @@
-/* page分页 */
-.pagediv{
-    font-size: 0;
-    text-align: center;
-    vertical-align: middle;
-}
-.pagediv .pageli{
-    font-size: 16px;
-    display: inline-block;
-    vertical-align: middle;
-    text-align: center;
-    border: 1px solid #e1e2e3;
-    cursor: pointer;
-    text-decoration: none;
-    overflow: hidden;
-    margin-right: 9px;
-    background: #fff;
-    padding:0px;
-}
-.pagea{
-    display:block;
-    height: 35px;
-    line-height: 35px;
-    padding:0px 15px;
-}
-.pageli.active .pagea{
-    color:#fff;
-    background: #888;
-}
-
-
 /* addimg btn */
 .l-editimgsdiv{
     padding:10px;

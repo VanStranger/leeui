@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../dist/leeui.css">
+</head>
+<body>
+  <div class="l-navBar">
+    <div class="l-navBar-leftnav">
+      <a href="javascript:;" class="l-btn l-btn-link">
+        <span class="iconfont iconleft"></span>
+        <span class="l-text">返回</span>
+      </a>
+    </div>
+    <div class="l-navBar-title">
+      标题
+    </div>
+    <div class="l-navBar-rightnav">
+      <a href="javascript:;" class="l-btn l-btn-link">
+        <span class="iconfont iconellipsis"></span>
+      </a>
+    </div>
+  </div>
+  <div id="header">
+
+  </div>
+</body>
+</html>
+<script src="../dist/leeui.js"></script>
+<script>
+var Lee=new leeui();
+  var NavBar=new Lee.navBar();
+  NavBar.render({
+    "elem":"#header",
+    "title":"小说页"
+  });
+</script>

@@ -1,0 +1,209 @@
+/** Tab选项卡 **/
+
+.l-tab {
+  margin: 10px 0;
+  text-align: left;
+  &.l-tab-center .l-tab-title{
+      text-align: center;
+  }
+}
+
+.l-tab[overflow]>.l-tab-title {
+  overflow: hidden;
+}
+
+.l-tab-title {
+  position: relative;
+  left: 0;
+  height: 40px;
+  white-space: nowrap;
+  font-size: 0;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  transition: all .2s;
+  -webkit-transition: all .2s;
+}
+
+.l-tab-title li {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  font-size: 14px;
+  transition: all .2s;
+  -webkit-transition: all .2s;
+}
+
+.l-tab-title li {
+  position: relative;
+  line-height: 40px;
+  min-width: 65px;
+  padding: 0 15px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.l-tab-title li a {
+  display: block;
+}
+
+.l-tab-title .l-this {
+  color: #000;
+}
+
+.l-tab-title .l-this:after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: '';
+  width: 100%;
+  height: 41px;
+  border-width: 1px;
+  border-style: solid;
+  border-bottom-color: #fff;
+  border-radius: 2px 2px 0 0;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.l-tab-bar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  width: 30px;
+  height: 39px;
+  line-height: 39px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 2px;
+  text-align: center;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.l-tab-bar .l-icon {
+  position: relative;
+  display: inline-block;
+  top: 3px;
+  transition: all .3s;
+  -webkit-transition: all .3s;
+}
+
+.l-tab-item {
+  display: none;
+}
+
+.l-tab-more {
+  padding-right: 30px;
+  height: auto !important;
+  white-space: normal !important;
+}
+
+.l-tab-more li.l-this:after {
+  border-bottom-color: #e2e2e2;
+  border-radius: 2px;
+}
+
+.l-tab-more .l-tab-bar .l-icon {
+  top: -2px;
+  top: 3px\0;
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+:root .l-tab-more .l-tab-bar .l-icon {
+  top: -2px\0/IE9;
+}
+
+.l-tab-content {
+  padding: 10px;
+}
+
+
+/* Tab关闭 */
+
+.l-tab-title li .l-tab-close {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  line-height: 20px;
+  margin-left: 8px;
+  top: 1px;
+  text-align: center;
+  font-size: 14px;
+  color: #c2c2c2;
+  transition: all .2s;
+  -webkit-transition: all .2s;
+}
+
+.l-tab-title li .l-tab-close:hover {
+  border-radius: 2px;
+  background-color: #FF5722;
+  color: #fff;
+}
+
+
+/* Tab简洁风格 */
+
+.l-tab-brief>.l-tab-title .l-this {
+  color: $basecolor;
+}
+
+.l-tab-brief>.l-tab-title .l-this:after,
+.l-tab-brief>.l-tab-more li.l-this:after {
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px solid $subBaseColor;
+}
+
+.l-tab-brief[overflow]>.l-tab-title .l-this:after {
+  top: -1px;
+}
+
+
+/* Tab卡片风格 */
+
+.l-tab-card {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
+}
+
+.l-tab-card>.l-tab-title {
+  background-color: #f2f2f2;
+}
+
+.l-tab-card>.l-tab-title li {
+  margin-right: -1px;
+  margin-left: -1px;
+}
+
+.l-tab-card>.l-tab-title .l-this {
+  background-color: #fff;
+}
+
+.l-tab-card>.l-tab-title .l-this:after {
+  border-top: none;
+  border-width: 1px;
+  border-bottom-color: #fff;
+}
+
+.l-tab-card>.l-tab-title .l-tab-bar {
+  height: 40px;
+  line-height: 40px;
+  border-radius: 0;
+  border-top: none;
+  border-right: none;
+}
+
+.l-tab-card>.l-tab-more .l-this {
+  background: none;
+  color: $subBaseColor;
+}
+
+.l-tab-card>.l-tab-more .l-this:after {
+  border: none;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <div class="tabBar">
+    <div class="tabBarItem tabBarItemActive" onclick="window.location.href=tabBar.html">
+      <span class="iconfont iconhome-fill tabBarItem-icon"></span>
+      <p class="tabBarItem-title">首页</p> 
+    </div>
+    <div class="tabBarItem" onclick="window.location.href=tabBar.html">
+      <span class="iconfont iconhome-fill tabBarItem-icon"></span>
+      <p class="tabBarItem-title">首页</p> 
+    </div>
+    <div class="tabBarItem" onclick="window.location.href=tabBar.html">
+      <span class="iconfont iconhome-fill tabBarItem-icon"></span>
+      <p class="tabBarItem-title">首页</p> 
+    </div>
+    <div class="tabBarItem" onclick="window.location.href=tabBar.html">
+      <span class="iconfont iconhome-fill tabBarItem-icon"></span>
+      <p class="tabBarItem-title">首页</p> 
+    </div>
+  </div> -->
+  <div id="demo"></div>
+</body>
+</html>
+<link rel="stylesheet" href="../dist/leeui.css">
+<script src="../dist/leeui.js"></script>
+<!-- <script src="../src/js/components/tabBar.js"></script> -->
+<script>
+  var Lee=new leeui();
+  var TabBar=new Lee.tabBar();
+  TabBar.render({
+    "elem":"#demo",
+    "onChange":function(item,index){
+      TabBar.activeKey=index;
+      console.log(this,index);
+    },
+    "data":[
+    {"icon":"iconhome","title":"首页","href":""},
+    {"icon":"iconunorderedlist","title":"分类","href":""},
+    {"icon":"iconmail","title":"消息","href":""},
+    {"icon":"iconuser","title":"我的","href":""},
+
+  ]
+  });
+</script>
